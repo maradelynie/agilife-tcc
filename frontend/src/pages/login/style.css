@@ -1,0 +1,23 @@
+.login_container{
+    padding: 0 3em;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin:auto;
+    width:100%;
+    max-width: 500px;
+}
+.logo{
+    font-size: 52px;
+    font-weight:900;
+}
+.form_container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:25px;
+    width:100%;
+    margin: 50px 0;
+}
+

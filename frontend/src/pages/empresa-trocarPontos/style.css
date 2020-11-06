@@ -1,0 +1,11 @@
+.recompensas_sectionContainer h3{
+    font-size: 1em;
+    text-align: left;
+}
+.recompensas_sectionContainer-pequeno h3{
+    font-size: 1em;
+    text-align: left;
+}
+.recompensas_sectionContainer-pequeno{
+    display:inline;
+}

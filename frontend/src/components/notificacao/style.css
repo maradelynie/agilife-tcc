@@ -1,0 +1,12 @@
+.notificacao_container{
+    background-color: white;
+    padding: 20px 1.5em;
+    text-align: left;
+    min-height: 5em;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #EFEFEF;
+}
+.notificacao_container img{
+    align-self: center;
+}

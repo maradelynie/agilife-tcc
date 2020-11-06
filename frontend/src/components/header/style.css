@@ -1,0 +1,55 @@
+.header{
+    background-color: #7041EE;
+   min-height: 80px;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+  
+}
+.header_detail{
+    background-color: white;
+    height: 40px;
+    border-radius:  3em  3em 0 0 ;
+}
+.header_nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    padding: .0 1em;
+    font-size: 20px;
+    color: white;
+    align-items: center;
+}
+.header_esquerda{
+    display: flex;
+    justify-content: left;
+ 
+    height: 3em;
+    align-items: center;
+    
+}
+.header_esquerda p{
+  
+   
+}
+.header_direita{
+    background-color: white;
+    font-size: .7em;
+    height: 1.5em;
+    border-radius: 20px;
+    color:#7041EE;
+    margin: 0 0 0 20px;
+    font-weight: bold;
+    
+    
+}
+.header_icon{
+    font-size: 2em;
+}
+.header_nav-center{
+    display: flex;
+    justify-content: space-between;
+    padding: .8em 1em;
+    font-size: 20px;
+    color: white;
+    align-items: center;
+}

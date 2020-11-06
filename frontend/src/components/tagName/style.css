@@ -1,0 +1,46 @@
+.card_recompensa{
+    margin: 20px 0;
+    display:flex;
+    gap:10px;
+    color: rgba(109, 109, 109, 0.71);
+    text-align: left;
+    background: #F1F1F1;
+    box-shadow: 0px 4.42741px 4.42741px rgba(0, 0, 0, 0.25);
+    border-radius: 17.7096px;
+    padding: 10px;
+}
+.card_recompensa img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.card_recompensa h3{
+    font-size: 1em;
+    color: rgba(109, 109, 109, 0.71);;
+   
+}
+.trocalock_card{
+    font-size: .8em;
+    padding: 3px 10px;
+    align-self: flex-end;
+    background: rgba(216, 216, 216, 0.47);
+    border-radius: 34.3124px;
+   
+}
+.trocalock_container{
+    display:flex;
+    height: 2em;;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+.trocalock_detail{
+    width: 100%;
+}
+.trocalock_card-open{
+    font-size: .8em;
+    padding: 3px 10px;
+    align-self: flex-end;
+    background: #7041EE;
+    border-radius: 34.3124px;
+    color:white;
+}

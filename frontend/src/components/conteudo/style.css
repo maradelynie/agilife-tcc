@@ -1,0 +1,24 @@
+
+.card_conteudo img{
+    width: 120px;
+    height: 80px;
+    border-radius: 30px;
+}
+.card_conteudo{
+    margin: 10px 0;
+    display:flex;
+    gap:10px;
+    color: rgba(109, 109, 109, 0.71);
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgba(109, 109, 109, 0.1);
+}
+.card_conteudo h3{
+    font-size: 1em;
+}
+.conteudo_detail-possui{
+    color:#7041EE;;
+}
+.conteudo_detail img{
+    filter:saturate(.1)
+}

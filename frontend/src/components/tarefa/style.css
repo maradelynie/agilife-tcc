@@ -1,0 +1,35 @@
+.tarefa_container{
+    border-left: 3px solid black ;
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5em;
+}
+.default{
+    border-color: #3F75FF;;
+}
+.atrasado{
+    border-color:#FA4F3B;
+}
+.feito{
+    border-color:#1ECD8C;
+}
+.default span{
+    font-size: 1.1em;
+    color:#3F75FF;
+}
+.atrasado span{
+    font-size: 1.1em;
+    color:#FA4F3B;
+}
+.feito span{
+    font-size: 1.1em;
+    color:#1ECD8C;
+}
+.tarefa_hora{
+    color: black;
+    font-weight: bold;
+}

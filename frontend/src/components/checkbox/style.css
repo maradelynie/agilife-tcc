@@ -1,0 +1,19 @@
+.Checkbox_container{
+    /* outline: 2px dashed #6D6D6D; */
+    
+    border: 2px dashed #6D6D6D;
+    width: 2em;
+    height: 2em;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+}
+.border_checked{
+    border: 2px solid #8A5EFF;
+}
+.icon_checked{
+    color: white;
+    background-color: #8A5EFF;
+    padding: 5px;
+    font-size: 2em;
+}
