@@ -1,71 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
 body {
-  font-family: 'Montserrat', sans-serif;
-  color: #A2A2A2;text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #a2a2a2;
+  text-align: center;
 }
-#root{
-  height:100vh;
-  
+#root {
+  min-height: 100vh;
+  background-color: #7041ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-  }
-  
-  ol, ul {
-    list-style: none;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  a{
-    color:#7041EE;
-    text-decoration: none;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-h3{
-  color:#7041EE;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  color: #7041ee;
+  text-decoration: none;
+}
+
+h3 {
+  color: #7041ee;
   font-weight: bold;
   font-size: 24px;
 }
-h5{
-  color:#7041EE;
+h5 {
+  color: #7041ee;
   font-weight: bold;
   font-size: 16px;
-  
 }
-.button_google{
-  height:4em;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  font-weight:bold !important;
+.button_google {
+  height: 4em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-weight: bold !important;
 
   border: none !important;
   box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.1) !important;
   border-radius: 24px !important;
 }
-.button_google span{
-  font-size:1.5em;
-  font-weight:900;
-  color:#4285F4;
+.button_google span {
+  font-size: 1.5em;
+  font-weight: 900;
+  color: #4285f4;
 }
-button{
+button {
   cursor: pointer;
 }
-.clicable{
+.clicable {
   cursor: pointer;
-
+}
+.clicable:hover {
+  opacity: 0.5;
+}
+.clicable:active {
+  opacity: 1;
+}
+.page_content {
+  background-color: white;
+  border-radius: 3em 3em 0 0;
+  padding: 0 2em 2em;
+  max-width: 700px;
+  width: 100%;
+  top: 4em;
+  height: calc(100vh - 3.5em);
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.page_content::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+hr {
+  width: 100%;
+  border: 1px 0 0 0 solid;
+  margin: 20px 0;
 }

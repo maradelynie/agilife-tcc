@@ -6,7 +6,7 @@ import Filter from '../../components/filterForum';
 import './style.css';
 import Header from '../../components/header';
 import Button from '../../components/button';
-import User from '../../components/user';
+// import User from '../../components/user';
 
 import forum1 from "../../assets/Group1.png";
 import forum2 from "../../assets/Group2.png";
@@ -62,7 +62,7 @@ export default function Forum1(props) {
             return(
                 <div className="card_comentario">
                     <div className="container_comentario">
-                        <User img={comentario.img}/>
+                        {/* <User img={comentario.img}/> */}
                         <div>
                     
                             <div className="comentario_titulo" >

@@ -1,12 +1,14 @@
-.notificacao_container{
-    background-color: white;
-    padding: 20px 1.5em;
-    text-align: left;
-    min-height: 5em;
-    display: flex;
-    gap: 20px;
-    border-bottom: 1px solid #EFEFEF;
+.notificacao_container {
+  padding: 20px 1.5em;
+  text-align: left;
+  min-height: 5em;
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #efefef;
 }
-.notificacao_container img{
-    align-self: center;
+.notification_icon {
+  align-self: center;
+  width: 100%;
+  font-size: 1.5em;
+  color: #7041ee;
 }

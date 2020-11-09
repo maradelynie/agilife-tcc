@@ -1,30 +1,24 @@
-export function setRecords (value) {
+export function setLogo (value) {
    return {
-        type: "SET_RECORDS",
+        type: "SET_LOGO",
         value:value
     }
 }
-export function addRecord (value) {
+export function setTitle (value) {
     return {
-         type: "ADD_RECORD",
+         type: "SET_TITLE",
          value:value
      }
  }
- export function deleteRecord (value) {
+ export function setMenu (value) {
     return {
-         type: "DELETE_RECORD",
+         type: "SET_MENU",
          value:value
      }
  }
- export function updateRecord (value) {
+ export function setNotifications (value) {
     return {
-         type: "UPDATE_RECORD",
-         value:value
-     }
- }
- export function selectItem (value) {
-    return {
-         type: "SELECT_ITEM",
+         type: "SET_NOTIFICATIONS",
          value:value
      }
  }

@@ -1,41 +1,31 @@
-.home_container{
-    padding: 0 1.5em;
-    display:flex;
-    margin: auto;
-    align-content: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 70%;
-    width:100%;
-    max-width: 500px;
+.home_container {
+  margin: auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
 }
-.home_nav{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: -20px;
+.home_container h3 {
+  font-size: 20px;
+  font-weight: 900;
 }
-.nav_icon{
-    font-size: 2em;
-    margin:20px 0;
+.home_nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7041ee;
 }
-.home_setores{
-    background-image: url("../../assets/Forma.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-content: center;
-    height: 100%;
-    gap:20px;
-
+.nav_icon {
+  font-size: 2em;
+  margin: 20px 0;
 }
-.home_setores-elemento{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;align-items: center;
-}
-.home_setoresIcone{
-    align-self: center;
+.main_container {
+  background-image: url("../../assets/Forma.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
 }

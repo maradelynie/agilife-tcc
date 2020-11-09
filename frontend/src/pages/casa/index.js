@@ -1,15 +1,23 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+
+import {setLogo,setTitle,setMenu,setNotifications} from "../../redux/actions";
+import {useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 
 import './style.css';
-import Header from '../../components/header';
+
 import DiaCasa from '../../components/diaCasa';
-import User from '../../components/user';
+// import User from '../../components/user';
 import Tarefa from '../../components/tarefa';
 
-export default function Home() {
-    const imgPerfil = "https://ath2.unileverservices.com/wp-content/uploads/sites/2/2017/10/perfis-de-mulheres-com-cabelo-curto-no-instagram-7.jpg";
-    const imgPerfilParceiro = "https://cdn.topmidianews.com.br/img/pc/620/320/dn_noticia/2019/04/servidor-25-anos.jpg";
-    const pontosCasa = 60;
+export default function Atividades() {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(setTitle("atividades"));
+        dispatch(setLogo(false));
+        dispatch(setMenu(false));
+    }, [])
 
     const tarefas = [{
         _id: 1,
@@ -39,18 +47,7 @@ export default function Home() {
     }]
    
     return (<>
-        <Header voltar="true" text="casa" pontos={pontosCasa}/>
-        <div className="casa_container">
-            <div className="casaDia">
-                <DiaCasa dia="Quarta-Feira" data="02 de Setembro de 2020"/>
-            </div>
-           <div  className="casal_container">
-               <h5>Casal</h5>
-               <div  className="casa_images">
-               <User img={imgPerfil}/>
-               <User img={imgPerfilParceiro}/>
-               </div>
-           </div>
+        <div className="task_container">
            {tarefas.map(tarefa => <Tarefa key={tarefa._id} dados={tarefa}/>)}
         </div>
         </>

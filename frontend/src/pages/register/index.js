@@ -1,60 +1,90 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { GoogleLogin } from "react-google-login";
 import {useHistory} from 'react-router-dom'
 
 
+import {setTitle} from "../../redux/actions";
+import {useDispatch} from "react-redux";
+
 import './style.css';
-import Header from '../../components/header';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
 const clientId = process.env.REACT_APP_GOOGLE_ID
 
 export default function Register() {
+  const dispatch = useDispatch();
+
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(setTitle("registro"))
+  }, [])
 
     const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [confirmaSenha, setConfirmaSenha] = useState("")
 
-    const extSuccess = (e) => {
-        // sendDataRegistro();
-        localStorage.setItem('token', e.accessToken);
-        localStorage.setItem('notificacoes', "['descanso','curso','tarefa']");
-        localStorage.setItem('pontosCasa', 60);
-        localStorage.setItem('pontosEmpresa', 200);
-        localStorage.setItem('userName', "Eliza");
-        localStorage.setItem('imgPerfil', "https://ath2.unileverservices.com/wp-content/uploads/sites/2/2017/10/perfis-de-mulheres-com-cabelo-curto-no-instagram-7.jpg");
-        
-        history.push("/setup/1");
+    const setGoogleData = async (e) => {
+        try{
+            const data = {
+                nome:e.googleId.email,
+                email:e.googleId.givenName,
+                senha:e.googleId.googleId
+            }
+    
+            register(data);
+        }catch{
+            registerFail();
+        }
+       
     }
-    const successLoguin = async () => {
-        await localStorage.setItem('perfilEmpreendedora', "true");
-        await localStorage.setItem('userName', "Eliza");
-        await localStorage.setItem('imgPerfil', "https://ath2.unileverservices.com/wp-content/uploads/sites/2/2017/10/perfis-de-mulheres-com-cabelo-curto-no-instagram-7.jpg");
-        
-        history.push("setup/1");
+    const register = async (data) => {
+        try{
+            // apiSetLogin(data);
+            registerSuccess()
+        }catch{
+            registerFail()
+        }
+
+    }
+    const setRegister = async (e) => {
+        e.preventDefault()
+        const data = {
+            nome,
+            email,
+            senha
+        }
+       
+        register(data)
+    }
+    const registerFail = async (e) => {
+        console.log("fail")
+    }
+    const registerSuccess = async (e) => {
+        history.push("/home");
     }
 
     return (<>
-        <Header logo={true}/>
         <div className="register_container">
-            <h3>Cadastro</h3>
             <form className="register_form">
                 <Input 
+                    autoComplete="name"
                     placeholder="Nome"
                     type="email" 
                     value={nome}
                     onChange={e => setNome(e.target.value)}
                 />
                 <Input 
+                    autoComplete="email"
                     placeholder="Email"
                     type="email" 
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <Input 
+                    autoComplete="no"
                     placeholder="Senha"
                     type="password" 
                     value={senha}
@@ -62,20 +92,22 @@ export default function Register() {
                 />
                 
                 <Input 
+                    autoComplete="no"
                     placeholder="Confirme a senha" 
                     type="password" 
                     value={confirmaSenha}
                     onChange={e => setConfirmaSenha(e.target.value)}
                 />
-                <Button onClick={successLoguin} type="submit" text="Cadastrar"></Button>
+                <Button onClick={setRegister} type="submit" text="Cadastrar"></Button>
             </form>
             <GoogleLogin
-                    className="button_google"
-                    clientId={clientId}
-                    buttonText="Cadastrar com Gmail"
-                    onSuccess={extSuccess}
-                    cookiePolicy={'single_host_origin'}
-                />
+                className="button_google"
+                clientId={clientId}
+                buttonText="Registrar com Gmail"
+                onSuccess={setGoogleData}
+                cookiePolicy={'single_host_origin'}
+                onFailure={registerFail}
+            />
         </div>
         
         </>

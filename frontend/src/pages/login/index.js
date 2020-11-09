@@ -1,61 +1,86 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import {useHistory} from 'react-router-dom'
 
-import logo from "../../assets/logog.png";
+import {setLogo,setTitle,setMenu} from "../../redux/actions";
+import {useDispatch} from "react-redux";
+
+import Logo from "../../assets/logog.png";
 
 import './style.css';
-import Header from '../../components/header';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
 const clientId = process.env.REACT_APP_GOOGLE_ID
 
 export default function Login() {
+
+  const dispatch = useDispatch();
+
   const history = useHistory();
 
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
 
-    const extSuccess = async (e) => {
-        console.log(e)
-        localStorage.setItem('token', e.accessToken);
-        localStorage.setItem('notificacoes', "['descanso','curso','tarefa']");
-        localStorage.setItem('pontosCasa', 60);
-        localStorage.setItem('pontosEmpresa', 200);
-
-        await localStorage.setItem('perfilEmpreendedora', "true");
-        await localStorage.setItem('userName', "Eliza");
-        await localStorage.setItem('imgPerfil', "https://ath2.unileverservices.com/wp-content/uploads/sites/2/2017/10/perfis-de-mulheres-com-cabelo-curto-no-instagram-7.jpg");
-        
-        // history.push("/home");
+    const setGoogleData = async (e) => {
+        try{
+            const data = {
+                nome:e.googleId.email,
+                email:e.googleId.givenName,
+                senha:e.googleId.googleId
+            }
+    
+            login(data);
+        }catch{
+            loginFail();
+        }
+       
     }
-    const successLoguin = async (e) => {
+    const login = async (data) => {
+        try{
+            // apiSetLogin(data);
+            loginSuccess()
+        }catch{
+            loginFail()
+        }
+
+    }
+    const setLogin = async (e) => {
         e.preventDefault()
-        localStorage.setItem('token', "loguin");
-
-        await localStorage.setItem('perfilEmpreendedora', "false");
-        
-        await localStorage.setItem('userName', "José");
-        await localStorage.setItem('imgPerfil', "https://cdn.topmidianews.com.br/img/pc/620/320/dn_noticia/2019/04/servidor-25-anos.jpg");
-
+        const data = {
+            email,
+            senha
+        }
+       
+        login(data)
+    }
+    const loginFail = async (e) => {
+        console.log("fail")
+    }
+    const loginSuccess = async (e) => {
         history.push("/home");
     }
-    
-    return (<>
-        <Header login={true}/>
+    useEffect(() => {
+        dispatch(setTitle(""))
+        dispatch(setLogo(false))
+        dispatch(setMenu(false))
+    }, [])
+    return (
+       
         <div className="login_container">
-            <img alt="Mulher usando o computador" src={logo}></img>
+            <img alt="logo agile" src={Logo}></img>
 
             <form className="form_container">
                     <Input 
+                        autoComplete="email"
                         placeholder="Usuário"
                         type="email" 
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
                     <Input 
+                        autoComplete="current-password"
                         placeholder="Senha" 
                         type="password" 
                         value={senha}
@@ -63,21 +88,21 @@ export default function Login() {
                     />
                
                 <div>
-                    <Button text="Login" onClick={(e) => successLoguin(e)} type="submit" ></Button>
-                    <p>Nova aqui? <Link to={'/register'}>Cadastre-se</Link>.</p>
+                    <Button text="Login" onClick={(e) => setLogin(e)} type="submit" ></Button>
+                    <p>Primeira vez aqui? <Link to={'/register'}>Cadastre-se</Link>.</p>
                 </div>
                 
             </form>
 
             <GoogleLogin
-                    className="button_google"
-                    clientId={clientId}
-                    buttonText="Logar com Gmail"
-                    onSuccess={extSuccess}
-                    cookiePolicy={'single_host_origin'}
-                    // isSignedIn={true}
-                />
+                className="button_google"
+                clientId={clientId}
+                buttonText="Logar com Gmail"
+                onSuccess={setGoogleData}
+                cookiePolicy={'single_host_origin'}
+                onFailure={loginFail}
+            />
         </div>
-        </>
+        
     )
 }

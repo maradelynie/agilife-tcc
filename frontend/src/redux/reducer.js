@@ -1,43 +1,38 @@
 const INITIAL_STATE = {
-    records : [] ,
-    selectedItem : {},
-    defaultTime : 9   
+    title : "" ,
+    menu : false,
+    logo : false,
+    notifications:[],
+    name: "User"  
 }
 
 function reducer(state = INITIAL_STATE, action){
     switch (action.type) {
-        case "SET_RECORDS":
+        case "SET_LOGO":
             
         return {
             ...state,
-            records: action.value
+            logo: action.value
         }
-        
-        case "ADD_RECORD":
-        return {
-            ...state,
-            records: [action.value,...state.records]
-        }
-        case "DELETE_RECORD":
-        
-        return {
-            ...state,
-            records: state.records.filter(record => record._id!==action.value._id)
-        }
-        case "UPDATE_RECORD":
-        
-        return {
-            ...state,
-            records: [action.value, ...state.records.filter(record => record._id!==action.value._id)]
-
-        }    
-        case "SELECT_ITEM":
+        case "SET_TITLE":
+            
+            return {
+                ...state,
+                title: action.value
+            }
+        case "SET_MENU":
         
             return {
                 ...state,
-                selectedItem: action.value
-            }      
+                menu: action.value
+            }
+        case "SET_NOTIFICATIONS":
     
+            return {
+                ...state,
+                notifications: action.value
+            }
+        
         default:
             return state
     }
