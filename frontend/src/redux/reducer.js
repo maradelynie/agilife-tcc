@@ -3,6 +3,7 @@ const INITIAL_STATE = {
     menu : false,
     logo : false,
     notifications:[],
+    tasks:[],
     name: "User"  
 }
 
@@ -32,7 +33,12 @@ function reducer(state = INITIAL_STATE, action){
                 ...state,
                 notifications: action.value
             }
-        
+        case "SET_TASKS":
+
+            return {
+                ...state,
+                tasks: action.value
+            }
         default:
             return state
     }

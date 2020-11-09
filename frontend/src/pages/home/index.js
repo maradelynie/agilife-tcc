@@ -19,8 +19,6 @@ export default function Home() {
 
     const history = useHistory();
 
-
-
     useEffect(() => {
         const alertArray = [{
             _id: 123123123,

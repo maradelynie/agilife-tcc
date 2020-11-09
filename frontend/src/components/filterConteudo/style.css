@@ -1,63 +1,65 @@
-.filtro_container{
-    color:#7041EE;
-    font-size:1.5em;
-    position: absolute;
-    margin-top: -15px;
-    right: 20px;
-    text-align: left;
+.filtro_container {
+  position: absolute;
+  right: 30px;
+  top: -10px;
+  color: #7041ee;
+  margin-top: 1em;
+  width: 100%;
+  font-size: 1.5em;
+  text-align: right;
 }
-.filtro_container-active{
-    width: 200px;
-    background: #F9F9F9;
-    box-shadow: 0px 0px 5.46789px rgba(0, 0, 0, 0.3);
-    border-radius: 42.8678px 0px 0px 42.8318px;
-    overflow: hidden;
-    right: 0;
+.filtro_container-active {
+  margin-top: 10px;
+  width: 200px;
+  background: #f9f9f9;
+  box-shadow: 0px 0px 5.46789px rgba(0, 0, 0, 0.3);
+  border-radius: 42.8678px 0px 0px 42.8318px;
+  overflow: hidden;
+  right: 0;
 }
-.noneDisplay{
-    display: none !important;
+.noneDisplay {
+  display: none !important;
 }
-.filtro_icon{
+.filtro_icon {
+  margin: 15px 30px;
+}
 
-   margin: 15px 30px;
+.menu_container {
+  color: #8a8a8a;
+  padding: 20px 30px;
+  font-weight: bold;
+  width: 100%;
+  font-size: 0.6em;
+  background-color: white;
+  border-bottom: 1px solid #e5e5e5;
 }
+.showMore_icon {
+  transform: rotate(180deg);
+}
+.menu_container-final {
+  color: #8a8a8a;
 
-.menu_container{
-    color:#8A8A8A;
-    padding: 20px 30px;
-    font-weight: bold;
-    width: 100%;
-    font-size:.6em;
-    background-color: white;
-    border-bottom: 1px solid #E5E5E5;
+  font-weight: bold;
+  padding: 20px 30px;
+  width: 100%;
+  font-size: 0.6em;
+  background-color: white;
 }
-.showMore_icon{
-    transform: rotate(180deg);
+.menu_active {
+  color: #7041ee;
 }
-.menu_container-final{
-    color:#8A8A8A;
-
-    font-weight: bold;
-    padding: 20px 30px;
-    width: 100%;
-    font-size:.6em;
-    background-color: white;
+.item_active {
+  color: #7041ee !important;
 }
-.menu_active{
-    color:#7041EE;
+.menu_active li {
+  margin: 10px 0;
+  color: #8a8a8a;
 }
-.item_active{
-    color:#7041EE !important;
+.menu_submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.menu_active li{
-    margin:10px 0;
-    color:#8A8A8A;
-}
-.menu_submenu{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.menu_container svg{
-    pointer-events: none;
+.menu_container svg {
+  pointer-events: none;
 }

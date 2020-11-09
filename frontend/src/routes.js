@@ -8,8 +8,8 @@ import Setup2 from './pages/setup2';
 import Setup3 from './pages/setup3';
 import Home from './pages/home';
 import Notificacoes from './pages/notificacoes';
-import Casa from './pages/casa';
-import Empresa from './pages/empresa';
+import Tasks from './pages/tasks';
+import Content from './pages/content';
 
 export default function Routes(){
     
@@ -23,8 +23,8 @@ export default function Routes(){
                 <Route path={`/setup/3`} exact component={Setup3} />
                 <Route path={`/home`} exact component={Home} />
                 <Route path={`/notificacoes`} exact component={Notificacoes} />
-                <Route path={`/tasks`} exact component={Casa} />
-                <Route path={`/content`} exact component={Empresa} />
+                <Route path={`/tasks`} exact component={Tasks} />
+                <Route path={`/content`} exact component={Content} />
             </Switch>
         
     )

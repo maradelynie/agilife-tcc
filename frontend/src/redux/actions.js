@@ -22,3 +22,10 @@ export function setTitle (value) {
          value:value
      }
  }
+ export function setTasks (value) {
+    return {
+         type: "SET_TASKS",
+         value:value
+     }
+ }
+ 

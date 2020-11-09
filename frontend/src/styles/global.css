@@ -82,6 +82,7 @@ button {
 }
 .clicable {
   cursor: pointer;
+  outline: none;
 }
 .clicable:hover {
   opacity: 0.5;
@@ -90,12 +91,12 @@ button {
   opacity: 1;
 }
 .page_content {
+  position: relative;
   background-color: white;
   border-radius: 3em 3em 0 0;
   padding: 0 2em 2em;
   max-width: 700px;
   width: 100%;
-  top: 4em;
   height: calc(100vh - 3.5em);
   overflow-y: auto;
   -ms-overflow-style: none; /* IE and Edge */

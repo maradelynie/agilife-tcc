@@ -1,21 +1,23 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 
+import {setLogo,setTitle,setMenu,setTasks} from "../../redux/actions";
+import {useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 
 import Button from '../../components/button';
 import Filter from '../../components/filterConteudo';
 import ModalCompra from '../../components/modalCompra';
 
-
 import './style.css';
-import Header from '../../components/header';
-import Conteudo from '../../components/conteudo';
+import ConteudoItem from '../../components/conteudoItem';
 
 export default function Home() {
     const [compraStatus, setCompraStatus] = useState(false)
     const [itemPontos, setItemPontos] = useState(0)
-
-  const history = useHistory();
+    const dispatch = useDispatch();
+    
+    const history = useHistory();
     const pontosEmpresa = 200;
     const conteudos = [
        
@@ -47,19 +49,19 @@ export default function Home() {
         await setItemPontos(pontos)
         await setCompraStatus(true)
     }
+
+    useEffect(() => {
+     
+        dispatch(setTitle("conteúdo"));
+        dispatch(setLogo(false));
+        dispatch(setMenu(false));
+    }, [])
    
     return (<>
-        <Header voltar="true" text="empresa" pontos={pontosEmpresa}/>
-        <ModalCompra status={compraStatus} setStatus={setCompraStatus} pontos={itemPontos} pontosEmpresa={pontosEmpresa}/>
-
-        <div className="empresa_container">
-            <div className="empresa_tab">
-                <Button  type="button" text="Conteúdos"></Button>
-                <Button type={"off"} onClick={() => history.push("/empresa/forum")}  text="Fórums"></Button>
-            </div>
+        <div className="content_container">
             <Filter/>
             {conteudos.map(conteudo=> {
-                return <Conteudo setTrocarPontos={setTrocarPontos} key={conteudo.titulo} data={conteudo}/>
+                return <ConteudoItem setTrocarPontos={setTrocarPontos} key={conteudo.titulo} data={conteudo}/>
             })}
         </div>
         </>

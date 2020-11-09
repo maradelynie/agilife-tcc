@@ -1,40 +1,24 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState} from 'react';
 
 import './style.css';
 import CheckBox from '../../components/checkbox';
 
-
-export default function Tarefa(props) {
-  const {nome,responsavel,hora} = props.dados;
-  const [status, setstatus] = useState(props.dados.status)
-  const [classTarefa, setClassTarefa] = useState("default")
-
+export default function Tarefa({data}) {
   
- useEffect(() => {
-  const data = new Date();
-  if(data.getHours() > hora.slice(0,2)){
-    setClassTarefa ("atrasado")
-  }else if(data.getHours() >= hora.slice(0,2) && data.getMinutes() > hora.slice(3,5)){
-    setClassTarefa ("atrasado")
-  }else{
-    setClassTarefa ("default")
-  }
-  if(status){
-    setClassTarefa("feito");
-  }
- }, [status,hora])
+  const {task,keeper} = data;
+  const [status, setstatus] = useState(data.status)
   
   const changeStatus = () =>{
     setstatus(status => !status)
   }
-
+ 
   return (<>
-    <div className={`tarefa_container ${classTarefa}`}>
+    <div className={status?"tarefa_container done":"tarefa_container default"} >
       <div>
-        <div><p><span>{nome} </span> {responsavel}</p></div>  
-        <p className="tarefa_hora" >{hora}</p>
+        <div><h4>{task} </h4> <p>{keeper}</p></div>  
       </div> 
       <CheckBox status={status} changeStatus={changeStatus}/>
+
     </div>
     </>
   );

@@ -3,7 +3,7 @@ import './style.css';
 
 import Button from '../button';
 
-export default function ModalCOmpra(props) {
+export default function ModalCompra(props) {
  
   const showTroca = () =>{
     if(props.pontosEmpresa>=props.pontos){

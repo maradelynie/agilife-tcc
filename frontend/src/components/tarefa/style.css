@@ -1,35 +1,26 @@
-.tarefa_container{
-    border-left: 3px solid black ;
-    margin: 10px 0;
-    text-align: left;
-    padding-left: 10px;
-    font-size: 1em;
-    display: flex;
-    justify-content: space-between;
-    line-height: 1.5em;
+.tarefa_container {
+  border-left: 4px solid black;
+  margin: 1em 0;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.5em;
 }
-.default{
-    border-color: #3F75FF;;
+.tarefa_container h4 {
+  font-weight: 900;
 }
-.atrasado{
-    border-color:#FA4F3B;
+.default {
+  border-color: #3f75ff;
 }
-.feito{
-    border-color:#1ECD8C;
+.default h4 {
+  color: #3f75ff;
 }
-.default span{
-    font-size: 1.1em;
-    color:#3F75FF;
+.done {
+  border-color: #1ecd8c;
 }
-.atrasado span{
-    font-size: 1.1em;
-    color:#FA4F3B;
-}
-.feito span{
-    font-size: 1.1em;
-    color:#1ECD8C;
-}
-.tarefa_hora{
-    color: black;
-    font-weight: bold;
+.done h4 {
+  color: #1ecd8c;
 }

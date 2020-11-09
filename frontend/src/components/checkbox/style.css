@@ -1,19 +1,18 @@
-.Checkbox_container{
-    /* outline: 2px dashed #6D6D6D; */
-    
-    border: 2px dashed #6D6D6D;
-    width: 2em;
-    height: 2em;
-    border-radius: 10px;
-    display: flex;
-    overflow: hidden;
+.Checkbox_container {
+  border: 1px dashed #8a5eff;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
 }
-.border_checked{
-    border: 2px solid #8A5EFF;
+.border_checked {
+  border: 2px solid #8a5eff;
 }
-.icon_checked{
-    color: white;
-    background-color: #8A5EFF;
-    padding: 5px;
-    font-size: 2em;
+.icon_checked {
+  color: white;
+  background-color: #8a5eff;
+  padding: 2px;
+  font-size: 1.7em;
 }
