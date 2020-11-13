@@ -3,22 +3,15 @@ import {useHistory} from 'react-router-dom'
 
 import {setLogo,setTitle,setMenu,setTasks} from "../../redux/actions";
 import {useDispatch} from "react-redux";
-import {useSelector} from "react-redux";
 
-import Button from '../../components/button';
-import Filter from '../../components/filterConteudo';
-import ModalCompra from '../../components/modalCompra';
 
 import './style.css';
 import ConteudoItem from '../../components/conteudoItem';
+import AsideFilter from '../../components/asideFilter';
 
 export default function Home() {
-    const [compraStatus, setCompraStatus] = useState(false)
-    const [itemPontos, setItemPontos] = useState(0)
     const dispatch = useDispatch();
     
-    const history = useHistory();
-    const pontosEmpresa = 200;
     const conteudos = [
        
             {tipo:"curso",
@@ -44,12 +37,6 @@ export default function Home() {
             valor:300,
             possui:false}]
 
-    const setTrocarPontos = async (pontos) => {
-        
-        await setItemPontos(pontos)
-        await setCompraStatus(true)
-    }
-
     useEffect(() => {
      
         dispatch(setTitle("conteúdo"));
@@ -58,10 +45,11 @@ export default function Home() {
     }, [])
    
     return (<>
+        <AsideFilter/>
         <div className="content_container">
-            <Filter/>
+            
             {conteudos.map(conteudo=> {
-                return <ConteudoItem setTrocarPontos={setTrocarPontos} key={conteudo.titulo} data={conteudo}/>
+                return <ConteudoItem  key={conteudo.titulo} data={conteudo}/>
             })}
         </div>
         </>

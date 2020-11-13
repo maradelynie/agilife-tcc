@@ -3,18 +3,19 @@ import {useHistory} from 'react-router-dom'
 
 import './style.css';
 
-import {setLogo,setTitle,setMenu,setNotifications} from "../../redux/actions";
+import {setLogo,setTitle,setMenu,setNotifications,setShowMenu} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 
 import { faBriefcase,faTasks } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import AsideMenu from '../../components/asideMenu';
 import Calendar from "../../components/calendar"
 import Notification from "../../components/notificacao"
 
 export default function Home() {
-    const {name,notifications} = useSelector(state => state);
+    const {name,notifications,points,showMenu} = useSelector(state => state);
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -42,10 +43,14 @@ export default function Home() {
     }, [])
 
     return (<>
+        <AsideMenu setShowMenu={()=>dispatch(setShowMenu())} status={showMenu}/>
         <div className="home_container">
             <nav className="home_nav">
                 <FontAwesomeIcon onClick={()=>history.push("/tasks")} className="nav_icon clicable" icon={faTasks}/>
-                <h3>{name}</h3>
+                <div>
+                    <h3>{name}</h3>
+                    <p>{points} pontos</p>
+                </div>
                 <FontAwesomeIcon onClick={()=>history.push("/content")} className="nav_icon clicable" icon={faBriefcase}/>
             </nav>
             <Calendar/>

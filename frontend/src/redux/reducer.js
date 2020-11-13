@@ -1,10 +1,12 @@
 const INITIAL_STATE = {
     title : "" ,
     menu : false,
+    showMenu: true,
     logo : false,
     notifications:[],
     tasks:[],
-    name: "User"  
+    name: "User",  
+    points: 123  
 }
 
 function reducer(state = INITIAL_STATE, action){
@@ -15,6 +17,12 @@ function reducer(state = INITIAL_STATE, action){
             ...state,
             logo: action.value
         }
+        case "SET_SHOWMENU":
+            
+            return {
+                ...state,
+                showMenu: !state.showMenu
+            }
         case "SET_TITLE":
             
             return {

@@ -16,10 +16,9 @@ ReactDOM.render(
     <Provider store={Store}>
       <BrowserRouter >
         <Header login={true}/>
-        <div className="page_content">
-          <Routes/> 
-        </div>
-      
+          <div className="page_content">
+            <Routes/> 
+          </div>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

@@ -1,12 +1,13 @@
 .filtro_container {
   position: absolute;
-  right: 30px;
-  top: -10px;
   color: #7041ee;
-  margin-top: 1em;
-  width: 100%;
+  top: 0;
+  right: 0;
+  background-color: #8a8a8a;
   font-size: 1.5em;
   text-align: right;
+  z-index: 10;
+  overflow: visible !important;
 }
 .filtro_container-active {
   margin-top: 10px;

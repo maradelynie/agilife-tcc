@@ -28,4 +28,10 @@ export function setTitle (value) {
          value:value
      }
  }
+ export function setShowMenu () {
+    return {
+         type: "SET_SHOWMENU",
+         
+     }
+ }
  
