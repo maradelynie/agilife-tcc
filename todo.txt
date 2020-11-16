@@ -1,7 +1,0 @@
-api functions
-
-waning components
-
-loading
-
-perfil ligado ao nome (home)
