@@ -1,7 +1,0 @@
-ligação com API
-
-x modal de warning
-x loading
-x modal de compra
-x iframe de conteúdo
-x tela ADM
