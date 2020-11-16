@@ -1,50 +1,47 @@
-.buttonDefault{
-    background-color: #7041EE;
-    font-size:1.5em;
-    margin: 1em 0;
-    color: white;
-    font-weight:500;
-    border-radius: 15px;
-    border:none;
-    width: 100%;
-    max-width: 200px;
-    line-height: 1.5em;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+.buttonDefault {
+  background-color: #7041ee;
+  font-size: 1.5em;
+  color: white;
+  font-weight: 500;
+  border-radius: 15px;
+  border: none;
+  width: 100%;
+  max-width: 200px;
+  line-height: 1.5em;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
-.buttonAdd{
-    background-color: transparent;
-    border: 2px solid #7041EE;
-    font-size:1.5em;
-    color: #7041EE;
-    font-weight:500;
-    border-radius: 15px;
-    width: 100%;
-    max-width: 100px;
+.buttonAdd {
+  background-color: transparent;
+  border: 2px solid #7041ee;
+  font-size: 1.5em;
+  color: #7041ee;
+  font-weight: 500;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 100px;
 }
-.buttonPontos{
-    background-color: transparent;
-    border: 2px solid #7041EE;
-    font-size:1em;
-    color: #7041EE;
-    font-weight:500;
-    border-radius: 15px;
-    width: 100%;
-    max-width: 200px;
-    margin-top: 10px;
-    box-shadow: 1px 1px 2px #A6A6A6;
-
+.buttonPontos {
+  background-color: transparent;
+  border: 2px solid #7041ee;
+  font-size: 1em;
+  color: #7041ee;
+  font-weight: 500;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 2px #a6a6a6;
 }
-.buttonOff{
-    background-color: #F3F3F3;
-    font-size:1.5em;
-    margin: 1em 0;
-    color: #7041EE;
-    font-weight:500;
-    border-radius: 15px;
-    border:none;
-    width: 100%;
-    max-width: 200px;
-    line-height: 1.5em;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-
+.buttonOff {
+  background-color: #f3f3f3;
+  font-size: 1.5em;
+  margin: 1em 0;
+  color: #7041ee;
+  font-weight: 500;
+  border-radius: 15px;
+  border: none;
+  width: 100%;
+  max-width: 200px;
+  line-height: 1.5em;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }

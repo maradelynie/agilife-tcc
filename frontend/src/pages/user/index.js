@@ -17,29 +17,15 @@ export default function Register() {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(setTitle("registro"))
+    dispatch(setTitle("perfil"))
   }, [])
 
     const [nome, setNome] = useState("")
-    const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
-    const [confirmaSenha, setConfirmaSenha] = useState("")
+    const [emailParceiro, setEmailParceiro] = useState("")
+    const [senha, setSenha] = useState('')
+    const [confirmaSenha, setConfirmaSenha] = useState('')
 
-    const setGoogleData = async (e) => {
-        try{
-            const data = {
-                nome:e.googleId.email,
-                email:e.googleId.givenName,
-                senha:e.googleId.googleId
-            }
-    
-            register(data);
-        }catch{
-            registerFail();
-        }
-       
-    }
-    const register = async (data) => {
+    const update = async (data) => {
         try{
             // apiSetLogin(data);
             registerSuccess()
@@ -48,26 +34,35 @@ export default function Register() {
         }
 
     }
-    const setRegister = async (e) => {
+    const SetUpdate = async (e) => {
         e.preventDefault()
         const data = {
             nome,
-            email,
-            senha
+            emailParceiro,
+        }
+        if(senha){
+            if(senha===confirmaSenha){
+                data[senha]=senha
+                update(data)
+            }
+            else registerFail()
+        }else{
+            update(data)
+
         }
        
-        register(data)
     }
-    const registerFail = async (e) => {
+    const registerFail = (e) => {
         console.log("fail")
     }
-    const registerSuccess = async (e) => {
-        history.push("/setup/1");
+    const registerSuccess = () => {
+        console.log("success")
+
     }
 
     return (<>
-        <div className="register_container">
-            <form className="register_form">
+        <form className="register_container">
+          
                 <Input 
                     autoComplete="name"
                     placeholder="Nome"
@@ -76,15 +71,15 @@ export default function Register() {
                     onChange={e => setNome(e.target.value)}
                 />
                 <Input 
-                    autoComplete="email"
-                    placeholder="Email"
+                    autoComplete="no"
+                    placeholder="Email Parceiro"
                     type="email" 
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    value={emailParceiro}
+                    onChange={e => setEmailParceiro(e.target.value)}
                 />
                 <Input 
                     autoComplete="no"
-                    placeholder="Senha"
+                    placeholder="Nova senha"
                     type="password" 
                     value={senha}
                     onChange={e => setSenha(e.target.value)}
@@ -92,22 +87,15 @@ export default function Register() {
                 
                 <Input 
                     autoComplete="no"
-                    placeholder="Confirme a senha" 
+                    placeholder="Confirme a nova senha" 
                     type="password" 
                     value={confirmaSenha}
                     onChange={e => setConfirmaSenha(e.target.value)}
                 />
-                <Button onClick={setRegister} type="submit" text="Cadastrar"></Button>
-            </form>
-            <GoogleLogin
-                className="button_google"
-                clientId={clientId}
-                buttonText="Registrar com Gmail"
-                onSuccess={setGoogleData}
-                cookiePolicy={'single_host_origin'}
-                onFailure={registerFail}
-            />
-        </div>
+                <Button onClick={SetUpdate} type="submit" text="atualizar"></Button>
+        
+            
+        </form>
         
         </>
     )

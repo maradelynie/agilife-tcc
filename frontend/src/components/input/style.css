@@ -1,18 +1,19 @@
-.inputDefault{
-    padding: 1.2em;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #D1D1D1;
+.inputDefault {
+  width: 100%;
+  padding: 1.2em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
 }
-.inputtarefas{
-    border: 1px solid #7041EE;
-    line-height: 1.8em;
-    border-radius: 3px;
-    width: 110px;
+.inputtarefas {
+  border: 1px solid #7041ee;
+  line-height: 1.8em;
+  border-radius: 3px;
+  width: 110px;
 }
-.inputtarefas_hora{
-    border: 1px solid #7041EE;
-    line-height: 1.8em;
-    border-radius: 3px;
-    width: 70px;
+.inputtarefas_hora {
+  border: 1px solid #7041ee;
+  line-height: 1.8em;
+  border-radius: 3px;
+  width: 70px;
 }

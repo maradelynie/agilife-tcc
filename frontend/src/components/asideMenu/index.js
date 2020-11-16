@@ -3,9 +3,6 @@ import {useHistory} from 'react-router-dom'
 
 import './style.css';
 
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 export default function Aside({setShowMenu,status}) {
   const history = useHistory();
   
@@ -16,6 +13,7 @@ export default function Aside({setShowMenu,status}) {
 
   const logout = () =>{
     localStorage.clear()
+    setShowMenu()
     history.push("/")
   }
   

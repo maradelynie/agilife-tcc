@@ -23,18 +23,12 @@ export default function Register() {
     }
 
     const cadastrarTarefas = () => {
-        // API SEND CONFIG DATA 
-        localStorage.removeItem('parceiro');
-        localStorage.removeItem('emailParceiro');
-        history.push("/home")
+        
     }
 
     useEffect(() => {
-        if(localStorage.getItem("parceiro")){
-            dispatch(setTitle("configuração de conta"))
-        }else{
-            history.push("/home")
-        }
+            dispatch(setTitle("editar atividades"))
+        
       }, [])
 
     return (<>
@@ -54,7 +48,7 @@ export default function Register() {
                 })}
                 </div>
                 <Button onClick={addTarefa} type="add" text="+"/>
-                <Button  onClick={cadastrarTarefas} type="submit" text="Cadastrar"/>
+                <Button  onClick={cadastrarTarefas} type="submit" text="atualizar"/>
             </form>
 
        

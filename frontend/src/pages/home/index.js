@@ -34,6 +34,7 @@ export default function Home() {
             text: "Novo conteúdo adiquirido, confira sua lista!",
             icon: "conteudo"
           }]
+        //   api call to see if is setted, if not redirect to setup 1
         // api call for notifications
         dispatch(setNotifications(alertArray));
 

@@ -23,8 +23,8 @@ export default function Header() {
     <div className="header">
       <div className={"header_nav"}>
         {title?<FontAwesomeIcon className="clicable" onClick={history.goBack} icon={faChevronLeft}/>:<div className="header_icon"></div>}
-        {logo?<img alt="Agilife" src={Logo}/>:<div></div>}
-        {menu?<FontAwesomeIcon onClick={()=>dispatch(setShowMenu())} className="clicable" icon={faEllipsisH}/>:<p >{title}</p>}
+        {logo&&!title?<img alt="Agilife" src={Logo}/>:<div></div>}
+        {menu&&!title?<FontAwesomeIcon onClick={()=>dispatch(setShowMenu())} className="clicable" icon={faEllipsisH}/>:<p >{title}</p>}
       </div>
     </div>
     </>

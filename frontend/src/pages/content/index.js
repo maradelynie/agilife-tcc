@@ -17,6 +17,7 @@ export default function Home() {
             {tipo:"curso",
             img:"https://www.jornalcontabil.com.br/wp-content/uploads/2019/12/empreendedorismofeminino.jpg",
             titulo:"Aprenda a Empreender",
+            url:"https://player.vimeo.com/video/137177039",
             valor:0,
             possui:true},
             {tipo:"Oficina",

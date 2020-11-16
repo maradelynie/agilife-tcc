@@ -1,24 +1,17 @@
-.setup_container{
-    padding: 0 3em;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin:auto;
-    width:100%;
-    gap:25px;
-
-    max-width: 500px;
+.setup_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  min-height: 100%;
+  gap: 1em;
 }
-.setup_container h3{
-    font-size: 20px;
-    text-align: center;
+.button_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+  width: 100%;
 }
-.button_container{
-    display:flex;
-    flex-direction:row;
-    gap:20px;
-    width:100%;
-}
-
-

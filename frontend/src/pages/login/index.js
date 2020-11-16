@@ -87,7 +87,7 @@ export default function Login() {
                         onChange={e => setSenha(e.target.value)}
                     />
                
-                <div>
+                <div  className="Login_submitContainer">
                     <Button text="Login" onClick={(e) => setLogin(e)} type="submit" ></Button>
                     <p>Primeira vez aqui? <Link to={'/register'}>Cadastre-se</Link>.</p>
                 </div>

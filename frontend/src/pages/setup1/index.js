@@ -1,48 +1,42 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import imgCasa from "../../assets/Casinha.png";
 import {useHistory} from 'react-router-dom'
 
+import {setTitle} from "../../redux/actions";
+import {useDispatch} from "react-redux";
 
 import './style.css';
-import Header from '../../components/header';
 import Button from '../../components/button';
-import Select from '../../components/select';
 
 export default function Register() {
+  const dispatch = useDispatch();
   const history = useHistory();
-
-    const [genero, setGenero] = useState("")
-    const optionsGender = ["Mulher","Homem"]
 
     const buttonNao= async () =>{
         await localStorage.setItem('parceiro', false);
-        await localStorage.setItem('genero', genero);
 
-        history.push("/setup/2")
+        history.push("/setup/3")
         
     }
     const buttonSim = async () => {
         await localStorage.setItem('parceiro', true);
-        await localStorage.setItem('genero', genero);
 
         history.push("/setup/2")
     }
 
+    useEffect(() => {
+        dispatch(setTitle("configuração de conta"))
+      }, [])
+
+
     return (<>
-        <Header logo={true}/>
             <div className="setup_container">
-                <Select 
-                    placeholder="Como se Identifica?"
-                    value={genero}
-                    onChange={e => setGenero(e.target.value)}
-                    options={optionsGender}
-                />
-                   
-            <img alt="casa roxa com arvores em volta" src={imgCasa}></img>
-                <h3>Você dividirá as tarefas do lar com alguem?</h3>
+                <img alt="casa roxa com arvores em volta" src={imgCasa}></img>
+                <p>Você dividirá as tarefas domésticas com mais alguem?</p>
+                    
                 <div className="button_container">
-                    <Button onClick={buttonSim} type="submit" text="SIM"/>
-                    <Button onClick={buttonNao}type="submit" text="NÃO"/>
+                    <Button onClick={buttonSim} type="submit" text="sim"/>
+                    <Button onClick={buttonNao}type="submit" text="não"/>
                 </div>
             </div>
 

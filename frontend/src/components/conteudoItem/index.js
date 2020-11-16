@@ -4,12 +4,19 @@ import './style.css';
 import { faLock,faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function RecompensaG(props) {
+export default function RecompensaG({data}) {
   let lock = faLock;
   let classLock = "item_conteudo";
-  const {img,titulo,valor,possui,tipo} = props.data
+  const {img,titulo,valor,possui,tipo} = data
 
+  const confirmAccess = () => {
+    if(possui) accessContent()
+    else console.log("abrir modal")
+  }
 
+  const accessContent = () => {
+    console.log("acessar")
+  }
 
   if(possui){
     lock =faLockOpen;
@@ -17,7 +24,7 @@ export default function RecompensaG(props) {
   }
 
   return (
-   <div onClick={() => {if(!possui) return props.setTrocarPontos(valor)}} className="card_conteudo">
+   <div onClick={confirmAccess} className="card_conteudo">
      <img src={img} alt={titulo}/>
      <div className={possui?"conteudo_detail-possui clicable":"conteudo_detail clicable"}>
         <p>{tipo}</p>
@@ -25,7 +32,7 @@ export default function RecompensaG(props) {
         
         <div className="trocalock_container"> 
           <div className={classLock}>
-            <FontAwesomeIcon   onClick={props.onClick} className="trocalock_icon" icon={lock}/>
+            <FontAwesomeIcon  className="trocalock_icon" icon={lock}/>
           {valor!==0?valor:""}
           </div>
         </div>

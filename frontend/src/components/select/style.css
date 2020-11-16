@@ -1,8 +1,7 @@
-.selectDefault{
-    padding: 1.2em;
-    width: 80%;
-    margin: 10px 0 ;
-    border-radius: 5px;
-    border: 1px solid #D1D1D1;
-    background-color:white;
+.selectDefault {
+  width: 100%;
+  padding: 1.2em;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  background-color: white;
 }

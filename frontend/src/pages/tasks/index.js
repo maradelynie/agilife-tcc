@@ -48,7 +48,7 @@ export default function Atividades() {
         <div className="task_container">
            {tasks.map(tarefa => <Tarefa key={tarefa._id} data={tarefa}/>)}
         </div> 
-        <Button onClick={()=>history.push("/tasksEdit")} type="button" text="Editar"/>
+        <Button onClick={()=>history.push("/editTasks")} type="button" text="Editar"/>
 
         </>
     )

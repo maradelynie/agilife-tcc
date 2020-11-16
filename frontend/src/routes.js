@@ -8,7 +8,9 @@ import Setup2 from './pages/setup2';
 import Setup3 from './pages/setup3';
 import Home from './pages/home';
 import Tasks from './pages/tasks';
+import EditTasks from './pages/editTaks';
 import Content from './pages/content';
+import User from './pages/user';
 
 export default function Routes(){
     
@@ -22,7 +24,9 @@ export default function Routes(){
                 <Route path={`/setup/3`} exact component={Setup3} />
                 <Route path={`/home`} exact component={Home} />
                 <Route path={`/tasks`} exact component={Tasks} />
+                <Route path={`/editTasks`} exact component={EditTasks} />
                 <Route path={`/content`} exact component={Content} />
+                <Route path={`/user`} exact component={User} />
             </Switch>
         
     )

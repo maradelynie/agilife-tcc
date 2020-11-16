@@ -1,14 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import imgEmail from "../../assets/VetorEmail.png";
 import {useHistory} from 'react-router-dom'
 
 
+import {setTitle} from "../../redux/actions";
+import {useDispatch} from "react-redux"; 
+
 import './style.css';
-import Header from '../../components/header';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
 export default function Register() {
+  const dispatch = useDispatch();
+
   const history = useHistory();
 
     const [email, setEmail] = useState("")
@@ -18,20 +22,21 @@ export default function Register() {
         
         history.push("/setup/3");
     }
+    useEffect(() => {
+        dispatch(setTitle("configuração de conta"))
+      }, [])
 
     return (<>
-        <Header  logo={true}/>
             <div className="setup_container">
-                <h3>Digite abaixo o email de seu/sua companheiro(a):</h3>
+
+                <img alt="casa roxa com arvores em volta" src={imgEmail}></img>
+                <p>Adicione o email para a gente enviar o convite para divisão de tarefas.</p>
 
                 <Input 
                     placeholder="Email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
-                <p>Enviaremos a ele(a) uma mensagem de confirmação</p>
-                   
-                <img alt="casa roxa com arvores em volta" src={imgEmail}></img>
                 <Button onClick={handleSubmit} type="submit" text="Próximo"/>
             </div>
 

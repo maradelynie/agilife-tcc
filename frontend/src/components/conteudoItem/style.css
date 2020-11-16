@@ -1,14 +1,16 @@
 .card_conteudo img {
-  width: 120px;
-  height: 80px;
+  width: 40%;
+  height: 6em;
+  max-width: 160px;
   border-radius: 30px;
+  object-fit: cover;
 }
 .card_conteudo {
   display: flex;
   gap: 10px;
   color: rgba(109, 109, 109, 0.71);
   text-align: left;
-  padding: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(109, 109, 109, 0.1);
 }
 .card_conteudo h3 {
