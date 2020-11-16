@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import './style.css';
 import Button from '../../components/button';
 
-export default function Register() {
+export default function Setup1() {
   const dispatch = useDispatch();
   const history = useHistory();
 

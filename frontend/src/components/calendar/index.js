@@ -20,11 +20,11 @@ export default function Calendar(props) {
 
   });
 
-  return <>
-    <h3>{weekDay}</h3>
-    <p>{day} de {month} de {year}</p>
-    <hr/>
-    </>
+  return <div className="calendario_container">
+      <h3>{weekDay}</h3>
+      <p>{day} de {month} de {year}</p>
+      <hr/>
+    </div>
   
 }
 

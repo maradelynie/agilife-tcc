@@ -1,0 +1,15 @@
+.task_container {
+  margin-top: 3em;
+}
+.casa_images {
+  display: flex;
+  margin: 10px 0;
+  gap: 20px;
+}
+.casal_container {
+  margin: 20px 0;
+  text-align: left;
+}
+.casal_container h5 {
+  font-weight: normal;
+}

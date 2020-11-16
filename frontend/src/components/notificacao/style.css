@@ -1,8 +1,9 @@
 .notificacao_container {
-  padding: 20px 1.5em;
   text-align: left;
   min-height: 5em;
   display: flex;
+  align-items: center;
+  padding: 10px 0;
   gap: 20px;
   border-bottom: 1px solid #efefef;
 }

@@ -5,7 +5,7 @@ import './style.css';
 import { faFilter,faSortDown,faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Aside() {
+export default function AsideFilter() {
   const [visible, setVisible] = useState(true)
   const [typeFilter, setTypeFilter] = useState('')
   const [accessFilter, setAccessFilter] = useState('')

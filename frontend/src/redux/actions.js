@@ -16,6 +16,13 @@ export function setTitle (value) {
          value:value
      }
  }
+
+
+
+
+
+
+
  export function setNotifications (value) {
     return {
          type: "SET_NOTIFICATIONS",
@@ -28,9 +35,63 @@ export function setTitle (value) {
          value:value
      }
  }
+ export function setPoints (value) {
+    return {
+         type: "SET_POINTS",
+         value:value
+         
+     }
+ }
+ export function setName (value) {
+    return {
+         type: "SET_NAME",
+         value:value
+         
+     }
+ }
+
+
+
+
+
  export function setShowMenu () {
     return {
          type: "SET_SHOWMENU",
+         
+     }
+ }
+ export function setIframe (value) {
+    return {
+         type: "SET_IFRAME",
+         value:value
+         
+     }
+ }
+ export function setIframeUrl (value) {
+    return {
+         type: "SET_IFRAMEURL",
+         value:value
+         
+     }
+ }
+ export function setWarning (value) {
+    return {
+         type: "SET_WARNING",
+         value:value
+         
+     }
+ }
+ export function setWarningText (value) {
+    return {
+         type: "SET_WARNINGTEXT",
+         value:value
+         
+     }
+ }
+ export function setLoading (value) {
+    return {
+         type: "SET_LOADING",
+         value:value
          
      }
  }

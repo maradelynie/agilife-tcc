@@ -1,68 +1,61 @@
 import React from 'react';
 import './style.css';
 
-import Button from '../button';
+import {useSelector} from "react-redux";
 
-export default function ModalCompra(props) {
- 
-  const showTroca = () =>{
-    if(props.pontosEmpresa>=props.pontos){
-      return(
-        <div className="opcaoCompra_card">
-          Trocar pontos pelo conteúdo
-            <Button className="buton_compra" type="button" text={`${props.pontos} pontos`}></Button>
-        </div>
-      )
-    }
-   
-      return(
-        <div className="opcaoCompra_card-off">
-          Opa, parece que você não possui pontos suficientes
-            <Button className="buton_compra" type="button" text={`${props.pontos} pontos`}></Button>
-        </div>
-      )
-    
-   
+import {setPoints} from "../../redux/actions";
+import {useDispatch} from "react-redux";
+
+export default function ModalCompra({status,setModal}) {
+  const {points} = useSelector(state => state);
+  const dispatch = useDispatch();
+
+  const changePoints = () =>{
+    // api change the points
+    // api put content on user list
+    dispatch(setPoints(points-status));
+    setModal(false);
   }
+
+  const showTroca = () =>{
+      return(
+        <button onClick={changePoints} className="opcaoCompra_card clicable">
+          Troque seus pontos pelo conteúdo;
+          <h3>{status} pontos</h3>
+        </button>
+      )
+  }
+
   const showCompra = () =>{
-    if(props.pontosEmpresa>=props.pontos){
+    
       return(
         <div className="opcaoCompra2_card">
           <h3>Torne-se Premium</h3>
-          <p>Acesso ilimitado a todos os conteúdos</p>
-          <div className="displayFlex"><h3>R$ 14,90</h3><h5>/mês</h5></div>
+
+          {/* <p>Acesso ilimitado a todos os conteúdos</p>
+          <div className="displayFlex"><h3>R$ 14,90</h3><h5>/mês</h5></div> */}
         </div>
       )
-      
-    }
-   
-    return(
-      <div className="opcaoCompra2_card-active">
-        <h3>Torne-se Premium</h3>
-        <p>Acesso ilimitado a todos os conteúdos</p>
-        <div><h3>R$ 14,90</h3><h5>/mês</h5></div>
-      </div>
-    )
-    
-   
+
   }
 
   const sair = (el) => {
     if(el.id==="out"){
-      console.log("out")
-      props.setStatus(false)
+      setModal(false)
     }
   }
-  if(!props.status){
+
+  if(!status){
     return ""
   }
+
   return (
    <div id="out" onClick={(e)=>{sair(e.target)}} className="modalcompra_container">
       <div className="modalcompra_card">
-        <Button  type="button" text={`${props.pontosEmpresa} pontos`}></Button>
-        <p>como você deseja adquirir esse conteúdo?</p>
+        <h3>{points} pontos </h3>
+        {points>=status?<p>como você deseja adquirir esse conteúdo?</p>:<p>você não tem pontos o suficiente para trocar.</p>}
         <div className="opcaoCompra_container" >
-        {showTroca()}
+        {points>=status?showTroca():<></>}
         {showCompra()}
          
         </div>

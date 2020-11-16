@@ -10,7 +10,7 @@ import './style.css';
 import Tarefa from '../../components/tarefa';
 import Button from '../../components/button';
 
-export default function Atividades() {
+export default function Tasks() {
     const history = useHistory();
 
     const {tasks} = useSelector(state => state);

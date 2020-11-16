@@ -10,7 +10,7 @@ import './style.css';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
-export default function Register() {
+export default function Setup2() {
   const dispatch = useDispatch();
 
   const history = useHistory();

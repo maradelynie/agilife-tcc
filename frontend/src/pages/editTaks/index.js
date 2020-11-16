@@ -9,7 +9,7 @@ import Button from '../../components/button';
 import Input from '../../components/input';
 import Select from '../../components/select';
 
-export default function Register() {
+export default function EditTasks() {
   const dispatch = useDispatch();
   const history = useHistory();
     const keeperOption = ["você","parceiro"]

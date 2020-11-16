@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from 'react'
-import { GoogleLogin } from "react-google-login";
 import {useHistory} from 'react-router-dom'
 
 import {setTitle} from "../../redux/actions";
@@ -9,9 +8,7 @@ import './style.css';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
-const clientId = process.env.REACT_APP_GOOGLE_ID
-
-export default function Register() {
+export default function User() {
   const dispatch = useDispatch();
 
   const history = useHistory();

@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
 
 import {setLogo,setTitle,setMenu,setTasks} from "../../redux/actions";
 import {useDispatch} from "react-redux";
@@ -7,9 +6,11 @@ import {useDispatch} from "react-redux";
 
 import './style.css';
 import ConteudoItem from '../../components/conteudoItem';
+import ModalCompra from '../../components/modalCompra';
 import AsideFilter from '../../components/asideFilter';
 
-export default function Home() {
+export default function Content() {
+    const [statusModalTroca, setStatusModalTroca] = useState(false)
     const dispatch = useDispatch();
     
     const conteudos = [
@@ -29,7 +30,7 @@ export default function Home() {
             {tipo:"Oficina",
             img:"https://alexandraoliveira.com.br/wp-content/uploads/2015/04/dias-desanimados-vida-empreendedora.jpg",
             titulo:"planejamento e lançamento de uma marca",
-            valor:150,
+            valor:100,
             possui:false},
 
             {tipo:"curso",
@@ -47,10 +48,11 @@ export default function Home() {
    
     return (<>
         <AsideFilter/>
-        <div className="content_container">
+        <ModalCompra status={statusModalTroca} setModal={setStatusModalTroca}/>
+        <div >
             
             {conteudos.map(conteudo=> {
-                return <ConteudoItem  key={conteudo.titulo} data={conteudo}/>
+                return <ConteudoItem setModal={setStatusModalTroca} key={conteudo.titulo} data={conteudo}/>
             })}
         </div>
         </>

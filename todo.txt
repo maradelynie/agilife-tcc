@@ -1,7 +1,7 @@
-api functions
+ligação com API
 
-waning components
-
-loading
-
-perfil ligado ao nome (home)
+x modal de warning
+x loading
+x modal de compra
+x iframe de conteúdo
+x tela ADM

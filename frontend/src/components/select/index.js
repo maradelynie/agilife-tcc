@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-export default function inputDefault(props) {
+export default function Select(props) {
   
   return (
     <select 
@@ -11,7 +11,7 @@ export default function inputDefault(props) {
     onChange={props.onChange}
     onBlur={props.onBlur}
     >
-      <option defaultValue value="">{props.placeholder}</option>
+      {props.placeholder?<option defaultValue value="">{props.placeholder}</option>:<></>}
       {props.options.map(option =>{
         return <option key={option} value={option}>{option}</option>
       })}
