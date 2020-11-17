@@ -3,12 +3,14 @@ import {useHistory} from 'react-router-dom'
 
 import './style.css';
 
-import {setLogo,setTitle,setMenu,setNotifications,setShowMenu} from "../../redux/actions";
+import {setLogo,setTitle,setMenu,setAllUserData,setShowMenu} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 
 import { faBriefcase,faTasks } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {getUserData} from "../../api";
 
 import AsideMenu from '../../components/asideMenu';
 import Calendar from "../../components/calendar"
@@ -21,22 +23,19 @@ export default function Home() {
     const history = useHistory();
 
     useEffect(() => {
-        const alertArray = [{
-            _id: 123123123,
-            text: "Novo conteúdo gratúito adicionado, confira!",
-            icon: "conteudo"
-          },{
-            _id: 234234234,
-            text: "Tarefa concluída, você ganhou mais +3 pontos!",
-            icon: "tarefas"
-          },{
-            _id: 345345345,
-            text: "Novo conteúdo adiquirido, confira sua lista!",
-            icon: "conteudo"
-          }]
-        //   api call to see if is setted, if not redirect to setup 1
-        // api call for notifications
-        dispatch(setNotifications(alertArray));
+        
+        const setUpDataUser = async (token) => {
+            if(token!==""){
+                if(name===""){
+                    const data = await getUserData(token)
+                    return dispatch(setAllUserData(data))
+                }
+            }else{
+                return history.push("/")
+            }
+        }
+        setUpDataUser(localStorage.getItem("token"))
+        
 
         dispatch(setTitle(""));
         dispatch(setLogo(true));

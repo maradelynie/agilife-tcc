@@ -3,11 +3,22 @@ import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import {useHistory} from 'react-router-dom'
 
-import {setLogo,setTitle,setMenu} from "../../redux/actions";
+import {
+    setLogo,
+    setTitle,
+    setMenu,
+    setWarning,
+    setWarningText,
+    setLoading,
+    setAllUserData
+    
+} from "../../redux/actions";
+
 import {useDispatch} from "react-redux";
 
 import Logo from "../../assets/logog.png";
 
+import {getAuth} from "../../api";
 import './style.css';
 import Button from '../../components/button';
 import Input from '../../components/input';
@@ -20,7 +31,7 @@ export default function Login() {
 
   const history = useHistory();
 
-    const [email, setEmail] = useState("")
+    const [email, setEmailInput] = useState("")
     const [senha, setSenha] = useState("")
 
     const setGoogleData = async (e) => {
@@ -38,27 +49,34 @@ export default function Login() {
        
     }
     const login = async (data) => {
+        dispatch(setLoading(true))
+        
         try{
-            // apiSetLogin(data);
-            loginSuccess()
+            const userAuth = await getAuth(data)
+            if(userAuth.res)loginSuccess(userAuth)
+            else loginFail()
         }catch{
             loginFail()
         }
+        dispatch(setLoading(false))
 
     }
     const setLogin = async (e) => {
         e.preventDefault()
         const data = {
-            email,
-            senha
+            login: email,
+            password: senha
         }
        
         login(data)
     }
-    const loginFail = async (e) => {
-        console.log("fail")
+    const loginFail = () => {
+        dispatch(setWarningText("Falha na autenticação, cheque seus dado e tente novamente"))
+        dispatch(setWarning(true))
     }
-    const loginSuccess = async (e) => {
+    const loginSuccess = (data) => {
+        console.log(data)
+        localStorage.setItem("token",data.token)
         history.push("/home");
     }
     useEffect(() => {
@@ -77,7 +95,7 @@ export default function Login() {
                         placeholder="Usuário"
                         type="email" 
                         value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={e => setEmailInput(e.target.value)}
                     />
                     <Input 
                         autoComplete="current-password"

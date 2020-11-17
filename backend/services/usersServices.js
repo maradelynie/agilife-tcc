@@ -4,16 +4,8 @@ async function auth(req, res) {
     const {login, password} = req.body
     try{
         const userData = await usersModel.findOne({login: login, password: password});
-        const dataUser = { 
-            content: userData.content,
-            name: userData.name,
-            login: userData.login,
-            points: userData.points,
-            userPartner: userData.userPartner,
-            tasks: userData.tasks,
-            token: userData._id
-        }
-        res.send({res:true, data:dataUser})
+       
+        res.send({res:true, token:userData._id})
 
     } catch (error) {
         res.status(400).send({ res:false, error: error.message});
@@ -42,16 +34,16 @@ async function register(req, res) {
 
 async function getUserData(req, res) {
     const {token} = req.params
-
     try{
-        const record = await usersModel.findOne({_id: token});
+        const userData = await usersModel.findOne({_id: token});
         const dataUser = { 
-            content: record.content,
-            name: record.name,
-            points: record.points,
-            userNotification: record.userNotification,
-            tasks: record.tasks,
-            token: record._id
+            content: userData.content,
+            name: userData.name,
+            email: userData.login,
+            points: userData.points,
+            userPartner: userData.userPartner,
+            tasks: userData.tasks,
+            token: userData._id
         }
         res.send({res:true, data:dataUser})
 
@@ -79,7 +71,6 @@ async function updateUserData(req, res) {
 }
 async function updateUserTask(req, res) {
     const {token} = req.body
-
     if (!req.body) {
         return res.status(400).send({
           message: 'No Data to Update',

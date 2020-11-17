@@ -8,8 +8,10 @@ const INITIAL_STATE = {
     notifications:[],
     tasks:[],
     contents:[],
-    name: "User",  
-    points: 123 ,
+    name: "",  
+    points: 0 ,
+    emailPartner: "" ,
+    email: "" ,
 
     // modais
     showMenu: true,
@@ -22,6 +24,22 @@ const INITIAL_STATE = {
 
 function reducer(state = INITIAL_STATE, action){
     switch (action.type) {
+        case "SET_ALLUSERDATA":
+    
+            return {
+            ...state,
+            name: action.value.name,
+            points: action.value.points,
+            email: action.value.email,
+            emailPartner: action.value.emailPartner,
+            tasks: action.value.tasks,
+            notifications: action.value.notifications,
+        }
+
+
+
+
+
         case "SET_LOGO":
             
         return {
@@ -76,7 +94,18 @@ function reducer(state = INITIAL_STATE, action){
                 ...state,
                 points: action.value
         }
+        case "SET_EMAIL":
 
+            return {
+                ...state,
+                email: action.value
+        }
+        case "SET_EMAILPARTNER":
+
+            return {
+                ...state,
+                emailPartner: action.value
+        }
 
 
 

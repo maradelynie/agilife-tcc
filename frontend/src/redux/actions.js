@@ -1,3 +1,13 @@
+export function setAllUserData (value) {
+    return {
+         type: "SET_ALLUSERDATA",
+         value:value
+     }
+ }
+
+
+
+
 export function setLogo (value) {
    return {
         type: "SET_LOGO",
@@ -22,7 +32,12 @@ export function setTitle (value) {
 
 
 
-
+ export function setContents (value) {
+    return {
+         type: "SET_CONTENTS",
+         value:value
+     }
+ }
  export function setNotifications (value) {
     return {
          type: "SET_NOTIFICATIONS",
@@ -45,6 +60,20 @@ export function setTitle (value) {
  export function setName (value) {
     return {
          type: "SET_NAME",
+         value:value
+         
+     }
+ }
+ export function setEmail (value) {
+    return {
+         type: "SET_EMAIL",
+         value:value
+         
+     }
+ }
+ export function setEmailPartner (value) {
+    return {
+         type: "SET_EMAILPARTNER",
          value:value
          
      }

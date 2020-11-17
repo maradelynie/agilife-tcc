@@ -59,7 +59,7 @@ export default function User() {
 
     return (<>
         <form className="register_container">
-          
+            <div className="user_container">
                 <Input 
                     autoComplete="name"
                     placeholder="Nome"
@@ -90,6 +90,9 @@ export default function User() {
                     onChange={e => setConfirmaSenha(e.target.value)}
                 />
                 <Button onClick={SetUpdate} type="submit" text="atualizar"></Button>
+
+            </div>
+                
         
             
         </form>

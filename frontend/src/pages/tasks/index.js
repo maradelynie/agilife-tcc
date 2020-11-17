@@ -1,11 +1,12 @@
 import React,{useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 
-import {setLogo,setTitle,setMenu,setTasks} from "../../redux/actions";
+import {setLogo,setTitle,setMenu,setAllUserData} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 
 import './style.css';
+import {getUserData} from "../../api";
 
 import Tarefa from '../../components/tarefa';
 import Button from '../../components/button';
@@ -17,27 +18,17 @@ export default function Tasks() {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        const taskArray = [{
-            task: "lavar louça1",
-            keeper: "user",
-            status: false
-        },{
-            task: "lavar louça2",
-            keeper: "not user",
-            status: false
-        },
-        {
-            task: "lavar louça3",
-            keeper: "user",
-            status: true
-        },
-        {
-            task: "lavar louça4",
-            keeper: "user",
-            status: false
-        }]
-        dispatch(setTasks(taskArray));
-
+        const setUpDataUser = async (token) => {
+            if(token){
+                if(tasks.length===0){
+                    const data = await getUserData(token)
+                    return dispatch(setAllUserData(data))
+                }
+            }else{
+                return history.push("/")
+            }
+        }
+        setUpDataUser(localStorage.getItem("token"))    
         dispatch(setTitle("atividades"));
         dispatch(setLogo(false));
         dispatch(setMenu(false));
@@ -46,7 +37,7 @@ export default function Tasks() {
       
     return (<>
         <div className="task_container">
-           {tasks.map(tarefa => <Tarefa key={tarefa._id} data={tarefa}/>)}
+           {tasks.map((tarefa,index) => <Tarefa key={index} index={index} data={tarefa}/>)}
         </div> 
         <Button onClick={()=>history.push("/editTasks")} type="button" text="Editar"/>
 

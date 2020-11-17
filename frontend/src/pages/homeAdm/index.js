@@ -23,6 +23,7 @@ export default function HomeAdm() {
     const [contentTitle, setContentTitle] = useState("")
     const [contentType, setContentType] = useState("")
     const [contentUrl, setContentUrl] = useState("")
+    const [contentImg, setContentImg] = useState("")
 
     const report = {
         _id: 123123123,
@@ -72,6 +73,13 @@ export default function HomeAdm() {
                     type="text" 
                     value={contentUrl}
                     onChange={e => setContentUrl(e.target.value)}
+                />
+                 <Input 
+                    autoComplete="no"
+                    placeholder="Url da imagem"
+                    type="text" 
+                    value={contentImg}
+                    onChange={e => setContentImg(e.target.value)}
                 />
             </div>
             <Button onClick={postContent} type="button" text="publicar"/>
