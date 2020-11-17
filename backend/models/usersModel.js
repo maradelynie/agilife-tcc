@@ -43,8 +43,8 @@ let schema = mongoose.Schema({
     default: "user",
     enum: ["user"]
 },
-  userNotification: {
-    type: [String]
+  userPartner: {
+    type: String
 }
 });
 

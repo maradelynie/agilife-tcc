@@ -11,6 +11,10 @@ let schema = mongoose.Schema({
     type: String,
     required: true
 },
+img: {
+  type: String,
+  required: true
+},
 link: {
   type: String,
   required: true

@@ -7,12 +7,12 @@ async function auth(req, res) {
         const dataUser = { 
             content: userData.content,
             name: userData.name,
+            login: userData.login,
             points: userData.points,
-            userNotification: userData.userNotification,
+            userPartner: userData.userPartner,
             tasks: userData.tasks,
             token: userData._id
         }
-
         res.send({res:true, data:dataUser})
 
     } catch (error) {
