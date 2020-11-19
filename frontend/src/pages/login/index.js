@@ -27,7 +27,6 @@ const clientId = process.env.REACT_APP_GOOGLE_ID
 export default function Login() {
     const dispatch = useDispatch();
     const history = useHistory();
-
     const [email, setEmailInput] = useState("")
     const [senha, setSenha] = useState("")
 
