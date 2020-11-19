@@ -3,23 +3,22 @@ import React,{useState} from 'react';
 import './style.css';
 import CheckBox from '../../components/checkbox';
 import {useSelector} from "react-redux";
-import {updateTasks} from "../../api";
+import {updateData} from "../../api";
 
 export default function Tarefa({data,index}) {
   
   const {task,keeper} = data;
   const [status, setstatus] = useState(data.status)
-  const {tasks,email} = useSelector(state => state);
+  const {tasks,email,points} = useSelector(state => state);
   
   const changeStatus = () =>{
-    
     setstatus(status => {
       const token = localStorage.getItem("token")
       if(token){
       data.status = !status;
       tasks[index] = data
-
-      updateTasks(tasks,token)
+      const newData = status?{points:points-3,tasks,token}:{points:points+3,tasks,token}
+      updateData(newData)
 
       return !status}
     })

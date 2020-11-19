@@ -18,11 +18,13 @@ export default function AsideMenu({setShowMenu,status,type}) {
   }
   const showItens = () =>{
     if(type){return (<>
+      <li onClick={()=>goTo("/homeAdm")} className="menu_container" >Início</li>
       <li onClick={()=>goTo("/contentAdm")} className="menu_container" >Gerenciar Conteúdo</li>
       <li onClick={logout} className="menu_container" >Logout</li>
     </>
   )}
     return (<>
+        <li onClick={()=>goTo("/home")} className="menu_container" >Início</li>
         <li onClick={()=>goTo("/user")} className="menu_container" >Perfil</li>
         <li onClick={()=>goTo("/content")} className="menu_container" >Conteúdos</li>
         <li onClick={()=>goTo("/tasks")} className="menu_container" >Atividades</li>

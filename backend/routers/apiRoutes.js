@@ -15,10 +15,11 @@ recordsRouter.patch('/task', controllerUser.updateUserTask);//
 
 recordsRouter.get('/notifications', controllerNotifications.getAllNotifications);//
 
-recordsRouter.get('/content', controllerContents.getAllContent);//
+recordsRouter.get('/allUsers', controllerUser.getAllUsers);//
+recordsRouter.post('/content', controllerContents.getAllContent);//
 recordsRouter.get('/adm/content/:ownerToken', controllerContents.getContent);//
 recordsRouter.post('/adm/content', controllerContents.createContent);//
 recordsRouter.patch('/adm/content/:id', controllerContents.updateContent);//
-recordsRouter.delete('/adm/content/:id', controllerContents.deleteContent);//
+recordsRouter.delete('/adm/content/:id/:ownerToken', controllerContents.deleteContent);//
 
 module.exports = recordsRouter;

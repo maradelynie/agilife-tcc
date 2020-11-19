@@ -31,10 +31,27 @@ export function setTitle (value) {
 
 
 
-
+ export function setAdmContents (value) {
+    return {
+         type: "SET_ADMCONTENTS",
+         value:value
+     }
+ }
+ export function setShowContents (value) {
+    return {
+         type: "SET_SHOWCONTENTS",
+         value:value
+     }
+ }
  export function setContents (value) {
     return {
          type: "SET_CONTENTS",
+         value:value
+     }
+ }
+ export function setAllContents (value) {
+    return {
+         type: "SET_ALLCONTENTS",
          value:value
      }
  }

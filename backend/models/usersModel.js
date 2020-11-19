@@ -18,7 +18,9 @@ status: {
 let schema = mongoose.Schema({
   login: {
     type: String,
-    required: true
+    required: true,
+    index: true,
+    unique: true
 },
   password: {
     type: String,
@@ -32,7 +34,9 @@ let schema = mongoose.Schema({
     type: [taskSchema] 
 },
   points: {
-    type: Number
+    type: Number,
+    default: 0
+
 },
   contents: {
     type: [String],
@@ -44,7 +48,9 @@ let schema = mongoose.Schema({
     enum: ["user"]
 },
   userPartner: {
-    type: String
+    type: String,
+    index: true,
+    unique: true
 }
 });
 

@@ -12,6 +12,7 @@ export default function inputDefault(props) {
 
   return (
     <input 
+    required={props.required}
     autoComplete={props.autoComplete}
     placeholder={props.placeholder}
     className={classInput}

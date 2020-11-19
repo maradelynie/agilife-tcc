@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 
 import './style.css';
 
-import {setLogo,setTitle,setMenu,setAllUserData,setShowMenu} from "../../redux/actions";
+import {setLogo,setTitle,setMenu,setAllUserData,setShowMenu,setLoading} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 
@@ -23,16 +23,27 @@ export default function Home() {
     const history = useHistory();
 
     useEffect(() => {
-        
         const setUpDataUser = async (token) => {
-            if(token!==""){
-                if(name===""){
+            dispatch(setLoading(true))
+
+            if(token){
+               
                     const data = await getUserData(token)
+                    if(data.tasks.length===0){
+                        localStorage.setItem("email", data.login)
+                        localStorage.setItem("partner", data.userPartner)
+                        return history.push("/setup/1")
+                    }
+                    dispatch(setLoading(false))
+
                     return dispatch(setAllUserData(data))
-                }
+              
             }else{
+                dispatch(setLoading(false))
+
                 return history.push("/")
             }
+
         }
         setUpDataUser(localStorage.getItem("token"))
         

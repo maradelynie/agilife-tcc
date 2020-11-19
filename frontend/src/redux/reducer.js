@@ -4,8 +4,13 @@ const INITIAL_STATE = {
     menu : false,
     logo : false,
 
-    // user
+    // all
     notifications:[],
+    allContents:[],
+    showContents:[],
+    admContents:[],
+
+    // user
     tasks:[],
     contents:[],
     name: "",  
@@ -30,10 +35,11 @@ function reducer(state = INITIAL_STATE, action){
             ...state,
             name: action.value.name,
             points: action.value.points,
-            email: action.value.email,
-            emailPartner: action.value.emailPartner,
+            email: action.value.login,
+            emailPartner: action.value.userPartner,
             tasks: action.value.tasks,
             notifications: action.value.notifications,
+            contents: action.value.contents,
         }
 
 
@@ -70,6 +76,28 @@ function reducer(state = INITIAL_STATE, action){
                 ...state,
                 notifications: action.value
         }
+        case "SET_ALLCONTENTS":
+
+            return {
+                ...state,
+                showContents: action.value,
+                allContents: action.value
+        }
+        case "SET_SHOWCONTENTS":
+
+            return {
+                ...state,
+                showContents: action.value
+        }
+        case "SET_ADMCONTENTS":
+
+            return {
+                ...state,
+                admContents: action.value
+        }
+
+
+
         case "SET_TASKS":
 
             return {

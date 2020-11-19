@@ -3,17 +3,29 @@ import './style.css';
 
 import {useSelector} from "react-redux";
 
-import {setPoints} from "../../redux/actions";
+import {updateData,getAllContent} from "../../api";
+
+import {setPoints,setAllContents, setContents} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 
 export default function ModalCompra({status,setModal}) {
-  const {points} = useSelector(state => state);
+  const {points,contents} = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const changePoints = () =>{
-    // api change the points
-    // api put content on user list
-    dispatch(setPoints(points-status));
+  const changePoints = async () =>{
+    const token = localStorage.getItem("token")
+    const data = {
+      token,
+      points: points-status.value,
+      contents: [...contents,status._id]
+    }
+    await updateData(data)
+    
+    const dataContent = await getAllContent([...contents,status._id])
+
+    dispatch(setAllContents(dataContent))
+    dispatch(setPoints(points-status.value));
+    dispatch(setContents([...contents,status._id]));
     setModal(false);
   }
 
@@ -21,7 +33,7 @@ export default function ModalCompra({status,setModal}) {
       return(
         <button onClick={changePoints} className="opcaoCompra_card clicable">
           Troque seus pontos pelo conteúdo;
-          <h3>{status} pontos</h3>
+          <h3>{status.value} pontos</h3>
         </button>
       )
   }
@@ -45,17 +57,18 @@ export default function ModalCompra({status,setModal}) {
     }
   }
 
-  if(!status){
+  if(status===false){
     return ""
   }
 
   return (
+
    <div id="out" onClick={(e)=>{sair(e.target)}} className="modalcompra_container">
       <div className="modalcompra_card">
         <h3>{points} pontos </h3>
-        {points>=status?<p>como você deseja adquirir esse conteúdo?</p>:<p>você não tem pontos o suficiente para trocar.</p>}
+        {points>=status.value?<p>como você deseja adquirir esse conteúdo?</p>:<p>você não tem pontos o suficiente para trocar.</p>}
         <div className="opcaoCompra_container" >
-        {points>=status?showTroca():<></>}
+        {points>=status.value?showTroca():<></>}
         {showCompra()}
          
         </div>

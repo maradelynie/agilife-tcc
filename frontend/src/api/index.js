@@ -15,27 +15,47 @@ export async function getAuth(data)  {
 export async function getUserData(token)  {
     const response = await api.get("/user/"+token);
     const notifications = await api.get("/notifications");
-    console.log(notifications.data)
     const allData = response.data.data
     allData["notifications"] = notifications.data
     return allData
 }
 
-export async function updateTasks(data,token)  {
-    const allData = {
-        token,
-        tasks:data
-    }
-    const response = await api.patch("/task",allData);
+export async function updateData(data)  {
 
+    const response = await api.patch("/task",data);
     return response.data
 }
+export async function getRegister(data)  {
+    const response = await api.post("/register",data);
+    return response.data
 
-// export async function postRecordApi(data)  {
-//     const fullData = data
-//     fullData.user = user
-//     const response = await api.post(null,fullData);
+}
+export async function getAllContent(contents)  {
+    const data = {
+        contents,
+    }
+    const response = await api.post("/content",data);
+    return response.data.data
+}
+export async function getAllUsers()  {
+    const response = await api.get("/allUsers");
+    return response.data
+}
+export async function postContent(data)  {
+    const response = await api.post("/adm/content",data);
+    return response.data
+}
+export async function getAdmContent(token)  {
+    const response = await api.get("/adm/content/"+token);
+    return response.data
+}
+export async function deletContent(id,token)  {
     
-//     return response.data
-// }
-
+    const response = await api.delete("/adm/content/"+id+"/"+token);
+    return response.data
+}
+export async function updateContent(id,data)  {
+    
+    const response = await api.patch("/adm/content/"+id,data);
+    return response.data
+}

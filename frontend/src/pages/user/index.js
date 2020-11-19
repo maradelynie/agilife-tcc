@@ -1,8 +1,11 @@
 import React, {useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
+import {useSelector} from "react-redux";
 
-import {setTitle} from "../../redux/actions";
 import {useDispatch} from "react-redux";
+import {setTitle,setAllUserData,setLoading,setWarning,setWarningText} from "../../redux/actions";
+
+import {updateData,getUserData} from "../../api";
 
 import './style.css';
 import Button from '../../components/button';
@@ -10,52 +13,49 @@ import Input from '../../components/input';
 
 export default function User() {
   const dispatch = useDispatch();
+  const {emailPartner,name} = useSelector(state => state);
 
   const history = useHistory();
 
   useEffect(() => {
+    const setUpDataUser = async (token) => {
+        dispatch(setLoading(true))
+
+        if(token){
+           
+                const data = await getUserData(token)
+                dispatch(setLoading(false))
+
+                return dispatch(setAllUserData(data))
+          
+        }else{
+            dispatch(setLoading(false))
+
+            return history.push("/")
+        }
+
+    }
+    setUpDataUser(localStorage.getItem("token"))
     dispatch(setTitle("perfil"))
   }, [])
 
-    const [nome, setNome] = useState("")
-    const [emailParceiro, setEmailParceiro] = useState("")
-    const [senha, setSenha] = useState('')
-    const [confirmaSenha, setConfirmaSenha] = useState('')
+    const [nome, setNome] = useState(name)
+    const [emailParceiro, setEmailParceiro] = useState(emailPartner)
 
     const update = async (data) => {
-        try{
-            // apiSetLogin(data);
-            registerSuccess()
-        }catch{
-            registerFail()
+        setLoading(true)
+
+        const token = localStorage.getItem("token")
+        const newData = await updateData({token,name:nome,userPartner:emailParceiro})
+
+        if(!newData.res){
+            dispatch(setWarningText("Algo ocorreu, porfavor atualize e tente novamente."))
+            dispatch(setWarning(true))
         }
+        setLoading(false)
 
     }
-    const SetUpdate = async (e) => {
-        e.preventDefault()
-        const data = {
-            nome,
-            emailParceiro,
-        }
-        if(senha){
-            if(senha===confirmaSenha){
-                data[senha]=senha
-                update(data)
-            }
-            else registerFail()
-        }else{
-            update(data)
 
-        }
-       
-    }
-    const registerFail = (e) => {
-        console.log("fail")
-    }
-    const registerSuccess = () => {
-        console.log("success")
-
-    }
 
     return (<>
         <form className="register_container">
@@ -74,22 +74,8 @@ export default function User() {
                     value={emailParceiro}
                     onChange={e => setEmailParceiro(e.target.value)}
                 />
-                <Input 
-                    autoComplete="no"
-                    placeholder="Nova senha"
-                    type="password" 
-                    value={senha}
-                    onChange={e => setSenha(e.target.value)}
-                />
-                
-                <Input 
-                    autoComplete="no"
-                    placeholder="Confirme a nova senha" 
-                    type="password" 
-                    value={confirmaSenha}
-                    onChange={e => setConfirmaSenha(e.target.value)}
-                />
-                <Button onClick={SetUpdate} type="submit" text="atualizar"></Button>
+              
+                <Button onClick={update} type="submit" text="atualizar"></Button>
 
             </div>
                 

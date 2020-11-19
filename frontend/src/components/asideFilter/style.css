@@ -18,6 +18,9 @@
   align-items: center;
   padding: 0 20px;
 }
+.menu_container svg {
+  pointer-events: none;
+}
 .menu_container {
   text-align: left;
   font-weight: bold;

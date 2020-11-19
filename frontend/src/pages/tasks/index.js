@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 
-import {setLogo,setTitle,setMenu,setAllUserData} from "../../redux/actions";
+import {setLogo,setTitle,setMenu,setAllUserData,setLoading} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 
@@ -18,16 +18,22 @@ export default function Tasks() {
     const dispatch = useDispatch();
     
     useEffect(() => {
+        dispatch(setLoading(true));
+
         const setUpDataUser = async (token) => {
             if(token){
                 if(tasks.length===0){
                     const data = await getUserData(token)
+                    dispatch(setLoading(false));
                     return dispatch(setAllUserData(data))
                 }
             }else{
+                dispatch(setLoading(false));
                 return history.push("/")
             }
         }
+        dispatch(setLoading(false));
+
         setUpDataUser(localStorage.getItem("token"))    
         dispatch(setTitle("atividades"));
         dispatch(setLogo(false));

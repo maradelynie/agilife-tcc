@@ -1,7 +1,10 @@
 import React, {useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
+import {useSelector} from "react-redux";
 
-import {setTitle} from "../../redux/actions";
+import {updateData} from "../../api";
+
+import {setTitle,setWarning,setWarningText,setLoading} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 
 import './style.css';
@@ -12,7 +15,9 @@ import Select from '../../components/select';
 export default function Setup3() {
   const dispatch = useDispatch();
   const history = useHistory();
-    const keeperOption = ["você","parceiro"]
+  const {name,notifications,points,showMenu} = useSelector(state => state);
+
+    const keeperOption = [localStorage.getItem("email"),localStorage.getItem("partner")]
     const [tarefas, setTarefas] = useState([1,2,3])
 
     const addTarefa = () => {
@@ -22,11 +27,31 @@ export default function Setup3() {
         })
     }
 
-    const cadastrarTarefas = () => {
-        // API SEND CONFIG DATA 
-        localStorage.removeItem('parceiro');
-        localStorage.removeItem('emailParceiro');
-        history.push("/home")
+    const cadastrarTarefas = async () => {
+        setLoading(true)
+        const inputs = document.querySelectorAll("input")
+        const selects = document.querySelectorAll("select")
+        const tasksList = []
+        inputs.forEach((taskItem,index)=>{
+            if(taskItem.value!==""){
+                const data = {
+                task:taskItem.value,
+                keeper:selects[index].value
+                }
+                tasksList.push(data)
+            }
+        })
+
+
+        const token = localStorage.getItem("token")
+        const newData = await updateData({token,tasks:tasksList})
+
+        if(newData.res) history.push("/home");
+        else{
+            dispatch(setWarningText("Algo ocorreu, porfavor atualize e tente novamente."))
+            dispatch(setWarning(true))
+        }
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -38,7 +63,7 @@ export default function Setup3() {
       }, [])
 
     return (<>
-            <form onSubmit={(e) => {e.preventDefault();e.persist(); return console.log(e)}} className="setup_container">
+            <form className="setup_container">
                 <div className="tarefas_container">
                 {tarefas.map((tarefa) =>{
                    return (

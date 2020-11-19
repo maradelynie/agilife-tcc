@@ -2,8 +2,9 @@ import React, {useState,useEffect} from 'react'
 import imgEmail from "../../assets/VetorEmail.png";
 import {useHistory} from 'react-router-dom'
 
+import {updateData} from "../../api";
 
-import {setTitle} from "../../redux/actions";
+import {setTitle,setWarning,setWarningText,} from "../../redux/actions";
 import {useDispatch} from "react-redux"; 
 
 import './style.css';
@@ -17,10 +18,18 @@ export default function Setup2() {
 
     const [email, setEmail] = useState("")
 
-    const handleSubmit = () => {
-        localStorage.setItem('emailParceiro', "email");
-        
-        history.push("/setup/3");
+    const handleSubmit = async () => {
+        const token = localStorage.getItem("token")
+        const newData = await updateData({token,userPartner:email})
+
+        if(newData.res){
+            localStorage.setItem("partner", email)
+            history.push("/setup/3");
+        }
+        else{
+            dispatch(setWarningText("Algo errado! Parece que esse email ja foi utilizado em outra conta."))
+            dispatch(setWarning(true))
+        }
     }
     useEffect(() => {
         dispatch(setTitle("configuração de conta"))

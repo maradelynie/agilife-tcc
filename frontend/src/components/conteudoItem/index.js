@@ -12,33 +12,32 @@ export default function ConteudoItem({data,setModal}) {
   
   let lock = faLock;
   let classLock = "item_conteudo";
-  const {img,titulo,valor,possui,tipo} = data
-
+  const {img,title,value,link,type,_id} = data
   const confirmAccess = () => {
-    if(possui) accessContent()
-    else setModal(valor)
+    if(link!=="") accessContent()
+    else setModal({value,_id})
   }
 
   const accessContent = () => {
     dispatch(setIframe(true))
-    dispatch(setIframeUrl(data.url))
+    dispatch(setIframeUrl(data.link))
   }
 
-  if(possui){
+  if(link!==""){
     lock =faLockOpen;
      classLock = "trocalock_card-open";
   }
   return (
    <div onClick={confirmAccess} className="card_conteudo">
-     <img src={img} alt={titulo}/>
-     <div className={possui?"conteudo_detail-possui clicable":"conteudo_detail clicable"}>
-        <p>{tipo}</p>
-        <h3>{titulo}</h3>
+     <img src={img} alt={title}/>
+     <div className={link!==""?"conteudo_detail-possui clicable":"conteudo_detail clicable"}>
+        <p>{type}</p>
+        <h3>{title}</h3>
         
         <div className="trocalock_container"> 
           <div className={classLock}>
             <FontAwesomeIcon  className="trocalock_icon" icon={lock}/>
-          {valor!==0?valor:""}
+          {value!==0?" "+value:""}
           </div>
         </div>
      </div>

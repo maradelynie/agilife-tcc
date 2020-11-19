@@ -25,7 +25,7 @@ export default function Routes(){
                 <Route path={`/setup/2`} exact component={Setup2} />
                 <Route path={`/setup/3`} exact component={Setup3} />
                 <Route path={`/home`} exact component={Home} />
-                <Route path={`/homeAdm`} exact component={HomeAdm} />
+                <Route path={`/homeAdm/:id?`} exact component={HomeAdm} />
                 <Route path={`/contentAdm`} exact component={ContentAdm} />
                 <Route path={`/tasks`} exact component={Tasks} />
                 <Route path={`/editTasks`} exact component={EditTasks} />

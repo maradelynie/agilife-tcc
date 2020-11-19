@@ -1,11 +1,11 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 
-import {setLogo,setTitle,setMenu,setTasks} from "../../redux/actions";
+import {setLogo,setTitle,setMenu,setAdmContents} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 
-
+import {getAdmContent} from "../../api"
 
 import './style.css';
 
@@ -14,39 +14,16 @@ import Content from '../../components/content';
 export default function ContentAdm() {
     const history = useHistory();
     const dispatch = useDispatch();
+    const {admContents} = useSelector(state => state);
 
-    const [contentArray, setContentArray] = useState([])
     
     useEffect(() => {
-
-        setContentArray([{
-            title: "Espreendedorismo 1",
-            type: "video aula",
-            link: "https://player.vimeo.com/video/137177039",
-            value: 125,
-            ownerId: "123"
-        },{
-            title: "Espreendedorismo 2",
-            type: "curso",
-            link: "https://player.vimeo.com/video/137177039",
-            value: 0,
-            ownerId: "123"
-        },
-        {
-            title: "Espreendedorismo 3",
-            type: "curso",
-            link: "https://player.vimeo.com/video/137177039",
-            value: 500,
-            ownerId: "123"
-        },
-        {
-            title: "Espreendedorismo 4",
-            type: "video aula",
-            link: "https://player.vimeo.com/video/137177039",
-            value: 200,
-            ownerId: "123"
-        }])
-
+        const getData = async () => {
+            const token = localStorage.getItem("token")
+            const data = await getAdmContent(token)
+            dispatch(setAdmContents(data.data));
+        }
+        getData()
         dispatch(setTitle("gerenciar conteúdo"));
         dispatch(setLogo(false));
         dispatch(setMenu(false));
@@ -55,7 +32,7 @@ export default function ContentAdm() {
       
     return (<>
             <div className="task_container">
-                {contentArray.map(content => <Content key={content._id} data={content}/>)}
+                {admContents.map(content => <Content key={content._id} data={content}/>)}
 
             </div> 
         </>

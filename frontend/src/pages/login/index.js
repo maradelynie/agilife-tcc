@@ -10,7 +10,6 @@ import {
     setWarning,
     setWarningText,
     setLoading,
-    setAllUserData
     
 } from "../../redux/actions";
 
@@ -26,10 +25,8 @@ import Input from '../../components/input';
 const clientId = process.env.REACT_APP_GOOGLE_ID
 
 export default function Login() {
-
-  const dispatch = useDispatch();
-
-  const history = useHistory();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [email, setEmailInput] = useState("")
     const [senha, setSenha] = useState("")
@@ -37,9 +34,8 @@ export default function Login() {
     const setGoogleData = async (e) => {
         try{
             const data = {
-                nome:e.googleId.email,
-                email:e.googleId.givenName,
-                senha:e.googleId.googleId
+                login: e.getBasicProfile().getEmail(),
+                password: e.getBasicProfile().getId()
             }
     
             login(data);
@@ -63,27 +59,30 @@ export default function Login() {
     }
     const setLogin = async (e) => {
         e.preventDefault()
+        if(email===""||senha==="")loginFail()
+        else{
         const data = {
             login: email,
             password: senha
         }
        
-        login(data)
+        login(data)}
     }
     const loginFail = () => {
         dispatch(setWarningText("Falha na autenticação, cheque seus dado e tente novamente"))
         dispatch(setWarning(true))
     }
     const loginSuccess = (data) => {
-        console.log(data)
         localStorage.setItem("token",data.token)
-        history.push("/home");
+        if(data.admin)history.push("/homeAdm");
+        else history.push("/home");
     }
     useEffect(() => {
         dispatch(setTitle(""))
         dispatch(setLogo(false))
         dispatch(setMenu(false))
     }, [])
+    
     return (
        
         <div className="login_container">
@@ -91,6 +90,7 @@ export default function Login() {
 
             <form className="form_container">
                     <Input 
+                        required={true}
                         autoComplete="email"
                         placeholder="Usuário"
                         type="email" 
@@ -98,6 +98,7 @@ export default function Login() {
                         onChange={e => setEmailInput(e.target.value)}
                     />
                     <Input 
+                        required={true}
                         autoComplete="current-password"
                         placeholder="Senha" 
                         type="password" 

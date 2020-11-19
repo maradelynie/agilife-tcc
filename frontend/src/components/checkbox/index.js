@@ -9,10 +9,19 @@ export default function Checkbox(props) {
   const [checkedBorder, setCheckedBorders] = useState(status?"border_checked":"")
   
   const acao = () =>{
+    const animation = document.querySelector("#animation")
     props.changeStatus()
     if(!status){
+      animation.classList.add("gainPoints")
+      setTimeout(() => {
+        animation.classList.remove("gainPoints")
+      }, 500); 
       setCheckedBorders("border_checked")
     }else{
+      animation.classList.add("losePoints")
+      setTimeout(() => {
+        animation.classList.remove("losePoints")
+      }, 500); 
       setCheckedBorders("")
     }
     return setStatus((status) => !status)
@@ -25,10 +34,13 @@ export default function Checkbox(props) {
     
   }
   
-  return (
+  return (<>
     <div onClick={acao} className={`Checkbox_container ${checkedBorder}`}>
       {check()}
     </div>
+    <div id="animation" className={"points_type"}></div>
+
+    </>
   );
 }
 
