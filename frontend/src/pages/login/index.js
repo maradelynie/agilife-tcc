@@ -22,7 +22,7 @@ import './style.css';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
-const clientId = "560780546067-epiigd1dr0rj7do54t9qdonni8c86qhj.apps.googleusercontent.com"
+const clientId = process.env.REACT_APP_GOOGLE_ID
 
 export default function Login() {
     const dispatch = useDispatch();
