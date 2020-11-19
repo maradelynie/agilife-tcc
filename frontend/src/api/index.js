@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const base = process.env.REACT_APP_API;
+const base = "https://agilife-backend.herokuapp.com/api";
 
 const api = axios.create({
     baseURL: base,
