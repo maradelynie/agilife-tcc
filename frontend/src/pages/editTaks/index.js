@@ -92,6 +92,7 @@ export default function EditTasks() {
                       <div key={tarefa} className="setup_tarefas">
                           <label>Tarefa
                               <Input autoComplete="no" />
+                              
                           </label>
                           <label>Responsável
                               <Select options={keeperOption} />
