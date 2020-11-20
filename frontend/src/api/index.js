@@ -41,6 +41,10 @@ export async function getAllUsers()  {
     const response = await api.get("/allUsers");
     return response.data
 }
+export async function getPoints(login)  {
+    const response = await api.get("/userPoints/"+login);
+    return response.data.data
+}
 export async function postContent(data)  {
     const response = await api.post("/adm/content",data);
     return response.data

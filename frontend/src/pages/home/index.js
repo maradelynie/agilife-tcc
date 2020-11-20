@@ -32,6 +32,8 @@ export default function Home() {
                     if(data.tasks.length===0){
                         localStorage.setItem("email", data.login)
                         localStorage.setItem("partner", data.userPartner)
+                        dispatch(setLoading(false))
+
                         return history.push("/setup/1")
                     }
                     dispatch(setLoading(false))

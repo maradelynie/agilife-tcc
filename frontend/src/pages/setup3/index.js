@@ -63,7 +63,7 @@ export default function Setup3() {
       }, [])
 
     return (<>
-            <form className="setup_container">
+            <form onSubmit ={e=>e.preventDefault()} className="setup_container">
                 <div className="tarefas_container">
                 {tarefas.map((tarefa) =>{
                    return (

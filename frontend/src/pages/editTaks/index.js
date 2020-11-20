@@ -20,38 +20,41 @@ export default function EditTasks() {
       const keeperOption = [emailPartner,email]
       const [tarefas, setTarefas] = useState([1,2,3])
   
-      const addTarefa = () => {
+      const addTarefa = (e) => {
+        e.preventDefault()
           setTarefas(tarefas => {
               const prox = tarefas.length+1;
               return [...tarefas, prox]
           })
       }
   
-      const cadastrarTarefas = async () => {
-          setLoading(true)
-          const inputs = document.querySelectorAll("input")
-          const selects = document.querySelectorAll("select")
-          const tasksList = []
-          inputs.forEach((taskItem,index)=>{
-              if(taskItem.value!==""){
-                  const data = {
-                  task:taskItem.value,
-                  keeper:selects[index].value
-                  }
-                  tasksList.push(data)
-              }
-          })
+      const cadastrarTarefas = async (e) => {
+
+        // e.preventDefault()
+        //   setLoading(true)
+        //   const inputs = document.querySelectorAll("input")
+        //   const selects = document.querySelectorAll("select")
+        //   const tasksList = []
+        //   inputs.forEach((taskItem,index)=>{
+        //       if(taskItem.value!==""){
+        //           const data = {
+        //           task:taskItem.value,
+        //           keeper:selects[index].value
+        //           }
+        //           tasksList.push(data)
+        //       }
+        //   })
   
   
-          const token = localStorage.getItem("token")
-          const newData = await updateData({token,tasks:tasksList})
+        //   const token = localStorage.getItem("token")
+        //   const newData = await updateData({token,tasks:tasksList})
   
-          if(newData.res) history.push("/home");
-          else{
-              dispatch(setWarningText("Algo ocorreu, porfavor atualize e tente novamente."))
-              dispatch(setWarning(true))
-          }
-          setLoading(false)
+        //   if(newData.res) history.push("/home");
+        //   else{
+        //       dispatch(setWarningText("Algo ocorreu, porfavor atualize e tente novamente."))
+        //       dispatch(setWarning(true))
+        //   }
+        //   setLoading(false)
       }
   
       useEffect(() => {
@@ -82,7 +85,7 @@ export default function EditTasks() {
         }, [])
   
       return (<>
-              <form className="setup_container">
+              <div  className="setup_container">
                   <div className="tarefas_container">
                   {tarefas.map((tarefa) =>{
                      return (
@@ -97,9 +100,9 @@ export default function EditTasks() {
                       )
                   })}
                   </div>
-                  <Button onClick={addTarefa} type="add" text="+"/>
-                  <Button  onClick={cadastrarTarefas} type="submit" text="Cadastrar"/>
-              </form>
+                  <Button onClick={(e)=>addTarefa(e)} type="add" text="+"/>
+                  {/* <Button  onClick={e=>e.preventDefault()} text="Cadastrar"/> */}
+              </div>
   
          
           </>

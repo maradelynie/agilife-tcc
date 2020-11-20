@@ -8,6 +8,7 @@ const recordsRouter = express.Router();
 recordsRouter.post('/authorization', controllerUser.auth);//
 recordsRouter.post('/register', controllerUser.register);//
 
+recordsRouter.get('/user/:login', controllerUser.getUserPoints);//
 recordsRouter.get('/user/:token', controllerUser.getUserData);//
 recordsRouter.patch('/user/:token', controllerUser.updateUserData);//
 

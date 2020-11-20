@@ -36,6 +36,18 @@ async function getUserData(req, res) {
     }
    
 }
+async function getUserPoints(req, res) {
+    const {login} = req.params
+    try{
+        const userData = await usersModel.findOne({login: login});
+        
+        res.send({res:true, data:userData.points})
+
+    } catch (error) {
+        res.status(400).send({ res:false, error: error.message});
+    }
+   
+}
 async function getAllUsers(req, res) {
     
     try{
@@ -90,5 +102,6 @@ module.exports = {
                 getUserData, 
                 updateUserData, 
                 updateUserTask,
-                getAllUsers
+                getAllUsers,
+                getUserPoints
                 }; 
