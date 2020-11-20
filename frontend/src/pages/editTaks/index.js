@@ -30,31 +30,31 @@ export default function EditTasks() {
   
       const cadastrarTarefas = async (e) => {
 
-        // e.preventDefault()
-        //   setLoading(true)
-        //   const inputs = document.querySelectorAll("input")
-        //   const selects = document.querySelectorAll("select")
-        //   const tasksList = []
-        //   inputs.forEach((taskItem,index)=>{
-        //       if(taskItem.value!==""){
-        //           const data = {
-        //           task:taskItem.value,
-        //           keeper:selects[index].value
-        //           }
-        //           tasksList.push(data)
-        //       }
-        //   })
+        e.preventDefault()
+          setLoading(true)
+          const inputs = document.querySelectorAll("input")
+          const selects = document.querySelectorAll("select")
+          const tasksList = []
+          inputs.forEach((taskItem,index)=>{
+              if(taskItem.value!==""){
+                  const data = {
+                  task:taskItem.value,
+                  keeper:selects[index].value
+                  }
+                  tasksList.push(data)
+              }
+          })
   
   
-        //   const token = localStorage.getItem("token")
-        //   const newData = await updateData({token,tasks:tasksList})
+          const token = localStorage.getItem("token")
+          const newData = await updateData({token,tasks:tasksList})
   
-        //   if(newData.res) history.push("/home");
-        //   else{
-        //       dispatch(setWarningText("Algo ocorreu, porfavor atualize e tente novamente."))
-        //       dispatch(setWarning(true))
-        //   }
-        //   setLoading(false)
+          if(newData.res) history.push("/home");
+          else{
+              dispatch(setWarningText("Algo ocorreu, porfavor atualize e tente novamente."))
+              dispatch(setWarning(true))
+          }
+          setLoading(false)
       }
   
       useEffect(() => {
@@ -85,7 +85,7 @@ export default function EditTasks() {
         }, [])
   
       return (<>
-              <div  className="setup_container">
+              <form  className="setup_container">
                   <div className="tarefas_container">
                   {tarefas.map((tarefa) =>{
                      return (
@@ -101,8 +101,8 @@ export default function EditTasks() {
                   })}
                   </div>
                   <Button onClick={(e)=>addTarefa(e)} type="add" text="+"/>
-                  {/* <Button  onClick={e=>e.preventDefault()} text="Cadastrar"/> */}
-              </div>
+                  <Button  onClick={(e)=>cadastrarTarefas(e)} text="Cadastrar"/>
+              </form>
   
          
           </>
